@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="SimpleContent" Package="icom" BeanClass="icom.SimpleContent"
+          isJavaBased="true">
+  <Attribute Name="contentEncoding" Type="java.lang.String"/>
+  <Attribute Name="characterEncoding" Type="java.lang.String"/>
+  <Attribute Name="contentLength" Type="java.lang.Integer"/>
+  <Attribute Name="contentLanguage" Type="java.util.Locale"/>
+  <Attribute Name="contentId" Type="java.lang.String"/>
+  <Attribute Name="mediaType" Type="java.lang.String"/>
+  <Attribute Name="content" IsUpdateable="0" Type="java.lang.String"/>
+  <AccessorAttribute id="inputStream" IsCollection="false"
+                     BeanClass="java.io.InputStream"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="outputStream" IsCollection="false"
+                     BeanClass="java.io.OutputStream"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="partIdentifier" IsCollection="true" Type="byte[]"
+                     CollectionBeanClass="UpdateableCollection">
+    <Attribute Name="element" Type="byte"/>
+  </AccessorAttribute>
+  <AccessorAttribute id="id" IsCollection="false" BeanClass="icom.Id"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="changeToken" IsCollection="false"
+                     BeanClass="icom.ChangeToken"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="contentDisposition" IsCollection="false"
+                     BeanClass="icom.ContentDispositionType"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="void" id="setDataFile"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="file" Type="java.io.File" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="icom.Content"
+                  BeanClass="icom.Content" id="clone"
+                  ReturnNodeName="SimpleContent"/>
+  <ConstructorMethod IsCollection="true" Type="icom.SimpleContent"
+                     BeanClass="icom.SimpleContent" id="SimpleContent"/>
+</JavaBean>

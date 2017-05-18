@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="TagApplication" Package="icom" BeanClass="icom.TagApplication"
+          isJavaBased="true">
+  <Attribute Name="applicationDate" IsUpdateable="0" Type="java.util.Date"/>
+  <AccessorAttribute id="id" IsCollection="false" BeanClass="icom.Id"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="changeToken" IsCollection="false"
+                     BeanClass="icom.ChangeToken"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="attachedEntity" IsCollection="false"
+                     BeanClass="icom.Entity"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tag" IsCollection="false" BeanClass="icom.Tag"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="appliedBy" IsCollection="false" BeanClass="icom.Actor"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="void" id="delete"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="icom.TagApplication"
+                  BeanClass="icom.TagApplication" id="clone"
+                  ReturnNodeName="TagApplication"/>
+  <ConstructorMethod IsCollection="true" Type="icom.TagApplication"
+                     BeanClass="icom.TagApplication" id="TagApplication">
+    <ParameterInfo id="tag" Type="icom.Tag" isStructured="true"/>
+    <ParameterInfo id="attachedEntity" Type="icom.Entity" isStructured="true"/>
+  </ConstructorMethod>
+</JavaBean>

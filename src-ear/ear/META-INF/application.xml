@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes"?>
+<application xmlns="http://java.sun.com/xml/ns/j2ee"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+	     http://java.sun.com/xml/ns/j2ee/application_1_4.xsd"
+	     version="1.4">
+  
+  <display-name>ICOM Entity Manager</display-name>
+  <module>
+    <ejb>icom-session-bean.jar</ejb>
+  </module>
+  <module>
+    <web>
+      <web-uri>example-servlet.war</web-uri>
+      <context-root>example</context-root>
+    </web>
+  </module>
+  <module>
+    <web>
+      <web-uri>adf-icom.war</web-uri>
+      <context-root>adf</context-root>
+    </web>
+  </module>
+</application>

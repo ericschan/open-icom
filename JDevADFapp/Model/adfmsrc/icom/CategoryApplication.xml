@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="CategoryApplication" Package="icom"
+          BeanClass="icom.CategoryApplication" isJavaBased="true">
+  <AccessorAttribute id="id" IsCollection="false" BeanClass="icom.Id"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="changeToken" IsCollection="false"
+                     BeanClass="icom.ChangeToken"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="attachedEntity" IsCollection="false"
+                     BeanClass="icom.Entity"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="category" IsCollection="false"
+                     BeanClass="icom.Category"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="properties" IsCollection="true"
+                     BeanClass="icom.Property"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="void" id="delete"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="icom.CategoryApplication"
+                  BeanClass="icom.CategoryApplication" id="clone"
+                  ReturnNodeName="CategoryApplication"/>
+  <ConstructorMethod IsCollection="true" Type="icom.CategoryApplication"
+                     BeanClass="icom.CategoryApplication"
+                     id="CategoryApplication">
+    <ParameterInfo id="category" Type="icom.Category" isStructured="true"/>
+    <ParameterInfo id="attachedEntity" Type="icom.Entity" isStructured="true"/>
+  </ConstructorMethod>
+</JavaBean>

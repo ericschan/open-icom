@@ -1,0 +1,45 @@
+Download the following XSD files:
+ <Host name and port of your Oracle Beehive HTTP server> /comb/v1/schema-obh-xjc.xsd 
+ <Host name and port of your Oracle Beehive HTTP server> /comb/v1/schema-obr.xsd 
+
+Generate value objects by running the JAXB XJC schema binding compiler, xjc, with the schema files schema-obh-xjc.xsd and schema-obr.xsd and the -extension option
+ E:\jaxb-ri-20110115\bin\xjc.bat schema-obh-xjc.xsd schema-obr.xsd -extension
+
+
+You may receive the following error message when using the generated classes:
+
+com.sun.istack.SAXException2: unable to marshal type "com.oracle.beehive.
+                                          
+className" as an element because it is missing an @XmlRootElement annotation
+                                        If you get this error message, manually add the @XmlRootElement annotation to the generated Java source file of className and add the following import statement: 
+
+import javax.xml.bind.annotation.XmlRootElement;
+For example, suppose you encountered the following error message:
+
+com.sun.istack.SAXException2: unable to marshal type "com.oracle.beehive.PredicateAndSortListParameters" as an element because it is missing an @XmlRootElement annotation
+You would import the class javax.xml.bind.annotation.XmlRootElement and add the highlighted line to the generated source file PredicateAndSortListParameters.java as follows: 
+
+                                           
+@XmlRootElement(name="predicateAndSortListParameters")
+public class PredicateAndSortListParameters
+    extends PredicateListParameters
+{
+
+@XmlRootElement(name="VersionControlConfigurationCreator")
+public class VersionControlConfigurationCreator
+    extends EntityCreator
+{
+
+@XmlRootElement(name="VersionControlConfigurationUpdater")
+public class VersionControlConfigurationUpdater
+    extends IdentifiableUpdater
+{
+
+@XmlRootElement(name="LabelApplicationUpdater")
+public class LabelApplicationUpdater
+    extends ArtifactUpdater
+{
+
+@XmlRootElement(name = "accessControlFields")
+public class AccessControlFields {
+

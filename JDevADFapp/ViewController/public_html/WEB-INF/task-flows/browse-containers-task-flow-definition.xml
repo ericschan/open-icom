@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="browse-containers-task-flow-definition">
+    <default-activity id="__1">BrowseContainers</default-activity>
+    <input-parameter-definition id="__10">
+      <name id="__9">contextId</name>
+      <value>#{pageFlowScope.contextId}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__8">
+      <name id="__7">callback</name>
+      <value>#{pageFlowScope.callback}</value>
+      <class>view.ExploreSpacesHelperBean</class>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__4">
+      <managed-bean-name id="__5">BrowseContainersHelperBean</managed-bean-name>
+      <managed-bean-class id="__3">taskflow.BrowseContainersHelperBean</managed-bean-class>
+      <managed-bean-scope id="__2">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="BrowseContainers">
+      <page>/BrowseContainers.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

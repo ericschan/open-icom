@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="ContentDispositionType" Package="icom"
+          BeanClass="icom.ContentDispositionType" isJavaBased="true">
+  <Attribute Name="contentDispositionType" IsUpdateable="0"
+             Type="java.lang.String"/>
+</JavaBean>

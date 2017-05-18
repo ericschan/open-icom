@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">ViewUnifiedMessage</property>
+      <property
+         name="page">/ViewUnifiedMessage.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ViewUnifiedMessage&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">122.09766</property>
+      <property
+         name="x">118.02734</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">ViewSimpleContent</property>
+      <property
+         name="page">/ViewSimpleContent.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ViewSimpleContent&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">121.12598</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">327.35938</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">next</property>
+      <property
+         name="sdm:polyPoints">R46,159.02734,118.24707,286.33267,117.27539,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">next</property>
+      <property
+         name="sdm:polyPoints">L54,286.35938,124.27539,159.05405,125.24707,R54</property>
+   </ControlFlowCase>
+</SDM>

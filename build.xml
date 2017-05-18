@@ -1,0 +1,341 @@
+<project name="icom-entity-manager" default="tar" basedir="." >
+  <description>Ant build script for icom project.</description> 
+ 
+  <import file="ant-icom.xml"/>
+  <property environment="env"/>
+
+  <import file="build_properties.xml"/>
+
+  <import file="weblogic-tasks.xml"/>
+  
+  <property name="log.dir" value="./log" />
+  <property name="compile-warnings" value="none"/>
+  <property name="compile.debug" value="on"/>
+  
+    <!--Set classpath vars as required -->
+    <path id="project.classpath">
+       <pathelement location="lib/jta.jar"/>
+       <pathelement location="lib/ejb30.jar"/>
+       <pathelement location="lib/persistence.jar"/>
+       <pathelement location="lib/asm-debug-all-3.3.1.jar"/>
+       <pathelement location="lib/servlet.jar"/>
+       <pathelement location="lib/commons-codec-1.6.jar"/>
+       <pathelement location="lib/icom-bean-info.jar"/>
+       <pathelement location="lib/icom-bean.jar"/>
+       <pathelement location="lib/beehive-bean-info.jar"/>
+       <pathelement location="lib/beehive-bean.jar"/>
+       <pathelement location="lib/icom-entity-manager-interface.jar"/>
+       <pathelement location="lib/icom-entity-manager.jar"/>
+       <pathelement location="lib/icom-weaver.jar"/>
+       <pathelement location="lib/icom-session-bean.jar"/>
+       <pathelement location="lib/icom-test.jar"/>
+      <pathelement path="${classes.dir}/java"/>        
+    </path>
+
+    <target name="init">
+        <!--Create the time stamp --> 
+        <tstamp />
+    </target>
+
+    <target name="subant" depends="init">
+	    <ant antfile="jpql/build.xml" inheritAll="no" target="lib"/> 
+	    <ant antfile="jpa-api/build.xml" inheritAll="no" target="lib"/>
+	    <ant antfile="jpa-weaver/build.xml" inheritAll="no" target="lib"/>
+	    <ant antfile="jpa-rt/build.xml" inheritAll="no" target="lib"/> 
+	    <ant antfile="icom-bean-info/build.xml" inheritAll="no" target="lib"/> 
+	    <ant antfile="icom-bean/build.xml" inheritAll="no" target="lib"/> 
+	    <ant antfile="beehive-bean-info/build.xml" inheritAll="no" target="lib"/> 
+	    <ant antfile="beehive-bean/build.xml" inheritAll="no" target="lib"/> 
+	    <ant antfile="jpa-connector-beehive-csi/build.xml" inheritAll="no" target="lib"/> 
+	    <ant antfile="jpa-connector-beehive-bdk/build.xml" inheritAll="no" target="lib"/>
+	    <ant antfile="test/build.xml" inheritAll="no" target="lib"/>
+            <ant antfile="JDevADFapp/build.xml" inheritAll="no" target="lib"/>
+    </target>
+
+    <target name="copy" depends="subant">
+            <mkdir dir="${ear.dir}" />
+            <copy file="${src.ear}/META-INF/application.xml" tofile="${ear.dir}/META-INF/application.xml"/>
+
+	        <mkdir dir="${jlib.dir}" />
+	        <mkdir dir="${jlib.dir}/APP-INF" />
+		<mkdir dir="${jlib.dir}/APP-INF/lib" />
+
+		<copy file="lib/asm-debug-all-3.3.1.jar" tofile="${jlib.dir}/APP-INF/lib/asm-debug-all-3.3.1.jar"/>
+		<copy file="lib/commons-codec-1.6.jar" tofile="${jlib.dir}/APP-INF/lib/commons-codec-1.6.jar"/>
+		<copy file="lib/jpqlparser.jar" tofile="${jlib.dir}/APP-INF/lib/jpqlparser.jar"/>
+		<copy file="lib/icom-entity-manager-interface.jar" tofile="${jlib.dir}/APP-INF/lib/icom-entity-manager-interface.jar"/>
+		<copy file="lib/icom-entity-manager.jar" tofile="${jlib.dir}/APP-INF/lib/icom-entity-manager.jar"/>
+		<copy file="lib/icom-weaver.jar" tofile="${jlib.dir}/APP-INF/lib/icom-weaver.jar"/>
+		<copy file="lib/icom-bean-info.jar" tofile="${jlib.dir}/APP-INF/lib/icom-bean-info.jar"/>
+		<copy file="lib/icom-bean.jar" tofile="${jlib.dir}/APP-INF/lib/icom-bean.jar"/>
+		<copy file="lib/beehive-bean-info.jar" tofile="${jlib.dir}/APP-INF/lib/beehive-bean-info.jar"/>
+		<copy file="lib/beehive-bean.jar" tofile="${jlib.dir}/APP-INF/lib/beehive-bean.jar"/>
+		<copy file="lib/icom-beehive-csi.jar" tofile="${jlib.dir}/APP-INF/lib/icom-beehive-csi.jar"/>
+		<copy file="lib/icom-beehive-bdk.jar" tofile="${jlib.dir}/APP-INF/lib/icom-beehive-bdk.jar"/>
+    	<copy file="jpa-connector-beehive-bdk/lib/commons-httpclient-3.1.jar" tofile="${jlib.dir}/APP-INF/lib/commons-httpclient-3.1.jar"/>
+    	<copy file="jpa-connector-beehive-bdk/lib/commons-logging-1.1.1.jar" tofile="${jlib.dir}/APP-INF/lib/commons-logging-1.1.1.jar"/>
+    	<copy file="jpa-connector-beehive-bdk/lib/jaxb-api.jar" tofile="${jlib.dir}/APP-INF/lib/jaxb-api.jar"/>
+    	<copy file="jpa-connector-beehive-bdk/lib/jaxb-impl.jar" tofile="${jlib.dir}/APP-INF/lib/jaxb-impl.jar"/>
+    	<copy file="jpa-connector-beehive-bdk/lib/jsr173_1.0_api.jar" tofile="${jlib.dir}/APP-INF/lib/jsr173_1.0_api.jar"/>
+      </target>
+
+      <target name="compile_init" depends="copy">
+	<mkdir dir="${classes.dir}" />
+	<mkdir dir="${classes.dir}/java" />    
+	<mkdir dir="${classes.dir}/java-servlet" />
+	<mkdir dir="${classes.dir}/java-jaxb" />
+	<mkdir dir="${classes.dir}/java-ws" />
+	<mkdir dir="${classes.dir}/java-ws-temp" />
+      </target>
+
+      <target name="compile" depends="compile_init" description="compile session bean and servlet">
+        <!-- By default debug is off i.e. shippable build -->
+        <condition property="compile.debug" value="off">
+            <not><isset property="compile.debug"/></not>
+        </condition>
+        <!-- By default optimize is on i.e. shippable build -->
+        <condition property="compile.optimize" value="on">
+            <not><isset property="compile.optimize"/></not>
+        </condition>
+	<depend srcdir="${src}/icom-session-bean"
+		destdir="${classes.dir}/java"
+              cache="${cache.dir}"/>
+	<depend srcdir="${src}/servlet"
+		destdir="${classes.dir}/java"
+              cache="${cache.dir}"/>
+        <echo>
+            Compiling the source with the following options
+	    Source Directory        : ${src}
+            Destination Directory   : ${classes.dir}
+            Debug                   : ${compile.debug}
+            Optimize                : ${compile.optimize}
+            Nowarn                  : ${compile.nowarn}
+            Decprecation            : ${compile.deprecation}
+        </echo>
+        <!--Compile the java code from ${src} into ${intdir}  --> 
+
+	<javac deprecation="${compile.deprecation}"
+               debug="${compile.debug}"
+               nowarn="${compile.nowarn}"
+               optimize="${compile.optimize}"
+	       srcdir="${src}/icom-session-bean"
+	       destdir="${classes.dir}/java">
+            <classpath refid="project.classpath" /> 
+            <compilerarg value="-Xlint" />
+    </javac>
+
+        <javac deprecation="${compile.deprecation}"
+               debug="${compile.debug}"
+               nowarn="${compile.nowarn}"
+               optimize="${compile.optimize}"
+	       srcdir="${src}/servlet"
+	       destdir="${classes.dir}/java-servlet">
+            <classpath refid="project.classpath" /> 
+            <compilerarg value="-Xlint" />
+        </javac>
+    </target>
+
+    <target name="jar" depends="compile" 
+            description="Generate project's JAR file">
+        <mkdir dir="${jlib.dir}" /> 
+
+	<jar jarfile="${icom-session-bean.jar}" >
+		<fileset dir="${src.icom-session-bean}"/>
+		<fileset dir="${src.entity-manager}"/>
+		<fileset dir="${classes.dir}/java">
+			<include name="**/session/*.class" />
+		</fileset>
+            <!--Manifest section --> 
+            <manifest>
+               <attribute name="Implementation-Title" value="${Implementation-Title}"/>
+	       <attribute name="Implementation-Version" value="${Implementation-Version}" />
+               <attribute name="Implementation-Vendor" value="${Implementation-Vendor}"/>
+                <!-- add required manifest information here -->
+            </manifest>
+        </jar>
+	
+        <condition property="file.size.check">
+           <length file="${icom-session-bean.jar}" when="greater" length="0"/>
+        </condition>
+        <!-- fail if file.size.check value is unset -->
+        <fail unless="file.size.check" 
+              message="${icom-session-bean.jar} does not exist or is of zero size"/> 
+      </target>
+
+       <target name="jaxb" if="jaxb.lib.valid" depends="jar,schemagen" description="XML Schema">
+            <schemagen destdir="${classes.dir}/java-jaxb">
+                <src path="${src}/icom-bean"/>
+		<src path="${src}/beehive-bean"/>
+                <exclude name="icom/IllegalArgumentException.java"/>
+                <exclude name="icom/IllegalAttributionException.java"/>
+		<exclude name="icom/beehive/IllegalConfigurationException.java"/>
+		<schema namespace="" file="icom.xsd" />
+                <schema namespace="http://docs.oasis-open.org/ns/icom/core/201008" file="icom-core.xsd" />
+                <schema namespace="http://docs.oasis-open.org/ns/icom/metadata/201008" file="icom-meta.xsd" />
+                <schema namespace="http://docs.oasis-open.org/ns/icom/accesscontrol/201008" file="icom-ac.xsd" />
+                <schema namespace="http://docs.oasis-open.org/ns/icom/content/201008" file="icom-content.xsd" />
+		<schema namespace="http://docs.oasis-open.org/ns/icom/document/201008" file="icom-doc.xsd" />
+		<schema namespace="http://docs.oasis-open.org/ns/icom/message/201008" file="icom-msg.xsd" />
+		<schema namespace="http://docs.oasis-open.org/ns/icom/contact/201008" file="icom-card.xsd" />
+		<schema namespace="http://docs.oasis-open.org/ns/icom/presence/201008" file="icom-presence.xsd" />
+		<schema namespace="http://docs.oasis-open.org/ns/icom/calendar/201008" file="icom-cal.xsd" />
+		<schema namespace="http://docs.oasis-open.org/ns/icom/task/201008" file="icom-task.xsd" />
+		<schema namespace="http://docs.oasis-open.org/ns/icom/forum/201008" file="icom-forum.xsd" />
+		<schema namespace="http://docs.oasis-open.org/ns/icom/conference/201008" file="icom-conf.xsd" />
+		<schema namespace="http://docs.oasis-open.org/ns/icom/beehive/201008" file="icom_beehive.xsd" />
+		<classpath refid="project.classpath" />
+		<classpath refid="jaxb.classpath" />
+            </schemagen>
+       </target>
+
+       <target name="ws" if="weblogic.server.lib.valid" depends="jar,jwsc" description="Web Service">
+	    <copy file="${src.ear}/META-INF/application.xml" tofile="${classes.dir}/java-ws/META-INF/application.xml"/>
+
+            <jwsc srcdir="${src}/icom-web-service" 
+		  destdir="${classes.dir}/java-ws" 
+		  keepGenerated="true" 
+		  keepTempFiles="true" 
+		  tempdir="${classes.dir}/java-ws-temp"
+		  deprecation="${compile.deprecation}"
+		  debug="${compile.debug}">
+                <classpath refid="project.classpath" /> 
+		<classpath refid="weblogic.classpath" />
+		<module contextPath="icom" name="icom-web-service" generateWsdl="true" explode="false" >
+                    <jws file="icom/session/IcomSessionBean.java" type="JAXWS" />
+		    <fileset dir="${src.icom-web-service}">
+                        <include name="META-INF/**" />
+                    </fileset>
+                </module>
+            </jwsc>
+
+            <condition property="file.size.check">
+                <length file="${classes.dir}/java-ws/icom-web-service.jar" when="greater" length="0"/>
+            </condition>
+            <!-- fail if file.size.check value is unset -->
+            <fail unless="file.size.check" 
+                message="${classes.dir}/java-ws/icom-web-service.jar does not exist or is of zero size"/> 
+
+            <copy file="${classes.dir}/java-ws/icom-web-service.jar" tofile="${icom-web-service.jar}"/>
+	    <copy file="${classes.dir}/java-ws/META-INF/application.xml" tofile="${ear.dir}/META-INF/application.xml"/>
+       </target>
+
+    <target name="war" depends="jar">
+	<mkdir dir="${war.dir}"/>
+
+	<war destfile="${war.file}" webxml="${src.war}/WEB-INF/web.xml">
+		<classes dir="${classes.dir}/java-servlet">
+			<include name="**/*"/>
+		</classes>
+		<fileset dir="${src.war}">
+			<include name="WEB-INF/**" />
+			<exclude name="WEB-INF/web.xml"/>
+		</fileset>
+	</war>
+
+	<condition property="file.size.check">
+           <length file="${war.file}" when="greater" length="0"/>
+        </condition>
+        <!-- fail if file.size.check value is unset -->
+        <fail unless="file.size.check" 
+              message="${war.file} does not exist or is of zero size"/> 
+     </target>
+  
+     <target name="ear" depends="jaxb,ws,war">
+	<mkdir dir="${ear.dir}" />
+		
+	<ear destfile="${ear.file}" appxml="${ear.dir}/META-INF/application.xml">
+		<fileset dir="${jlib.dir}">
+			<include name="*.jar" />
+			<include name="**/APP-INF/lib/*.jar" />
+			<include name="**/adf/META-INF/*" />
+		</fileset>
+		<fileset dir="${war.dir}">
+			<include name="*.war" />
+		</fileset>
+		<fileset dir="${src.ear}">
+			<include name="**/APP-INF/lib/*.jar" />
+			<exclude name="**/application.xml" />
+			<include name="META-INF/weblogic-application.xml" />
+		</fileset>
+	</ear>
+
+	<condition property="file.size.check">
+           <length file="${ear.file}" when="greater" length="0"/>
+        </condition>
+        <!-- fail if file.size.check value is unset -->
+        <fail unless="file.size.check" 
+              message="${ear.file} does not exist or is of zero size"/>
+      </target>
+
+	<target name="tar" depends="ear">
+		<mkdir dir="${tar.dir}" />
+		<tar destfile="${tar.dir}/icomGroovy.tar">
+		  <tarfileset dir="lib" prefix="icomGroovy/lib">
+		  	<include name="ejb30.jar"/>
+		  	<include name="jta.jar"/>
+		  	<include name="persistence.jar"/>
+			<include name="asm-debug-all-3.3.1.jar"/>
+			<include name="commons-codec-1.6.jar"/>
+		    	<include name="jpqlparser.jar"/>
+		  	<include name="icom-entity-manager-interface.jar"/>
+		    	<include name="icom-entity-manager.jar"/>
+		    	<include name="icom-weaver.jar"/>
+		    	<include name="icom-bean-info.jar"/>
+		  	<include name="icom-bean.jar"/>
+		  	<include name="beehive-bean-info.jar"/>
+		  	<include name="beehive-bean.jar"/>
+		  	<include name="icom-beehive-bdk.jar"/>
+		  	<include name="icom-bean.jar"/>
+		  </tarfileset>
+		  <tarfileset dir="jpa-connector-beehive-bdk/lib" prefix="icomGroovy/lib">
+		  	<include name="commons-httpclient-3.1.jar"/>
+		  	<include name="commons-codec-1.4.jar"/>
+		  	<include name="commons-logging-1.1.1.jar"/>
+		  	<include name="jaxb-api.jar"/>
+		  	<include name="jaxb-impl.jar"/>
+		  	<include name="jsr173_1.0_api.jar"/>
+		  </tarfileset>
+		  <tarfileset dir="groovy" prefix="icomGroovy">
+		    <include name="**"/>
+		  </tarfileset>
+		</tar>
+		<gzip destfile="${tar.dir}/icomGroovy.tar.gz" src="${tar.dir}/icomGroovy.tar"/>
+	</target>
+	
+	<target name="clean" description="clean up">
+		<delete  quiet="true" failonerror="false" includeEmptyDirs="true"> 
+			<fileset dir="${outdir}" /> 
+        		<fileset dir="${intdir}" /> 
+		</delete>
+		<delete file="lib/jpqlparser.jar"/>
+		<delete file="lib/icom-bean-info.jar"/>
+       		<delete file="lib/icom-bean.jar"/>
+      		<delete file="lib/beehive-bean-info.jar"/>
+       		<delete file="lib/beehive-bean.jar"/>
+       		<delete file="lib/icom-entity-manager-interface.jar"/>
+       		<delete file="lib/icom-entity-manager.jar"/>
+		<delete file="lib/icom-weaver.jar"/>
+       		<delete file="lib/icom-session-bean.jar"/>
+       		<delete file="lib/icom-test.jar"/>
+		<delete file="lib/icom-beehive-bdk.jar"/>
+       		<delete file="lib/icom-beehive-csi.jar"/>
+       		<delete dir="groovy/contentStreams"/>
+		<delete dir="groovy/checkouts"/>
+	</target>
+
+	<target name="cleanall" description="clean up all" depends="clean">
+		<ant antfile="jpql/build.xml" inheritAll="no" target="clean"/> 
+		<ant antfile="jpa-api/build.xml" inheritAll="no" target="clean"/>
+		<ant antfile="jpa-weaver/build.xml" inheritAll="no" target="clean"/>
+		<ant antfile="jpa-rt/build.xml" inheritAll="no" target="clean"/> 
+		<ant antfile="icom-bean-info/build.xml" inheritAll="no" target="clean"/> 
+		<ant antfile="icom-bean/build.xml" inheritAll="no" target="clean"/> 
+		<ant antfile="beehive-bean-info/build.xml" inheritAll="no" target="clean"/> 
+		<ant antfile="beehive-bean/build.xml" inheritAll="no" target="clean"/> 
+		<ant antfile="jpa-connector-beehive-csi/build.xml" inheritAll="no" target="clean"/>
+		<ant antfile="jpa-connector-beehive-bdk/build.xml" inheritAll="no" target="clean"/>
+		<ant antfile="JDevADFapp/build.xml" inheritAll="no" target="clean"/>
+		<ant antfile="test/build.xml" inheritAll="no" target="clean"/>
+	</target>
+
+</project>

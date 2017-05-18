@@ -1,0 +1,36 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<JLibraryNode nselem="JLibraryNode" class="oracle.jdeveloper.library.JLibraryNode" deployedByDefault="false" xmlns="http://xmlns.oracle.com/jdeveloper/110000jlibrarynode">
+   <classPath>
+      <entries>
+         <Item path="../../lib/asm-debug-all-3.3.1.jar" jar-entry=""/>
+         <Item path="../../lib/ejb30.jar" jar-entry=""/>
+         <Item path="../../lib/jta.jar" jar-entry=""/>
+         <Item path="../../lib/persistence.jar" jar-entry=""/>
+         <Item path="../../lib/servlet.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-bdk/lib/activation.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-bdk/lib/commons-codec-1.4.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-bdk/lib/commons-httpclient-3.1.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-bdk/lib/commons-logging-1.1.1.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-bdk/lib/httpclient-4.1.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-bdk/lib/jaxb-api.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-bdk/lib/jaxb-impl.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-bdk/lib/jaxb-xjc.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-bdk/lib/jsr173_1.0_api.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-csi/lib/authentication-framework.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-csi/lib/beehive-lifecycle-mdb.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-csi/lib/csi-impl-oc4j-shared.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-csi/lib/csi_r1.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-csi/lib/ocs-cspi-oc4j-shared.jar" jar-entry=""/>
+         <Item path="../../jpa-connector-beehive-csi/lib/service.jar" jar-entry=""/>
+         <Item path="../lib/adf-faces-databinding-rt.jar" jar-entry=""/>
+      </entries>
+   </classPath>
+   <docPath>
+      <entries class="[Ljava.net.URL;"/>
+   </docPath>
+   <locked>false</locked>
+   <name>icom</name>
+   <sourcePath>
+      <entries class="[Ljava.net.URL;"/>
+   </sourcePath>
+</JLibraryNode>

@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth">
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.Artifact.collectionModel}" var="row"
+                  rows="#{bindings.Artifact.rangeSize}"
+                  emptyText="#{bindings.Artifact.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.Artifact.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.Artifact.collectionModel.selectedRow}"
+                  selectionListener="#{pageFlowScope.ListItemsHelperBean.selectTableRow}"
+                  rowSelection="single" id="t1" columnSelection="multiple"
+                  displayRow="selected">
+          <af:column sortProperty="name" filterable="true" sortable="true"
+                     headerText="#{bindings.Artifact.hints.name.label}" id="c8"
+                     width="258">
+            <af:inputText value="#{row.bindings.name.inputValue}"
+                          label="#{bindings.Artifact.hints.name.label}"
+                          required="#{bindings.Artifact.hints.name.mandatory}"
+                          columns="#{bindings.Artifact.hints.name.displayWidth}"
+                          maximumLength="#{bindings.Artifact.hints.name.precision}"
+                          shortDesc="#{bindings.Artifact.hints.name.tooltip}"
+                          id="it3">
+              <f:validator binding="#{row.bindings.name.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="description" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.Artifact.hints.description.label}"
+                     id="c7" width="324">
+            <af:inputText value="#{row.bindings.description.inputValue}"
+                          label="#{bindings.Artifact.hints.description.label}"
+                          required="#{bindings.Artifact.hints.description.mandatory}"
+                          columns="#{bindings.Artifact.hints.description.displayWidth}"
+                          maximumLength="#{bindings.Artifact.hints.description.precision}"
+                          shortDesc="#{bindings.Artifact.hints.description.tooltip}"
+                          id="it4">
+              <f:validator binding="#{row.bindings.description.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="lastModificationDate" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.Artifact.hints.lastModificationDate.label}"
+                     id="c3" width="173">
+            <af:inputDate value="#{row.bindings.lastModificationDate.inputValue}"
+                          label="#{bindings.Artifact.hints.lastModificationDate.label}"
+                          required="#{bindings.Artifact.hints.lastModificationDate.mandatory}"
+                          shortDesc="#{bindings.Artifact.hints.lastModificationDate.tooltip}"
+                          id="id6" readOnly="true">
+              <f:validator binding="#{row.bindings.lastModificationDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.Artifact.hints.lastModificationDate.format}"
+                                  type="both"/>
+            </af:inputDate>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

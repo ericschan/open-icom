@@ -1,0 +1,2 @@
+set CLASSPATH=.;lib/jsr173_1.0_api.jar;lib/jaxb-impl.jar;lib/jaxb-api.jar;lib/commons-codec-1.6.jar;lib/commons-httpclient-3.1.jar;lib/commons-logging-1.1.1.jar;lib/asm-debug-all-3.3.1.jar;lib/ejb30.jar;lib/jta.jar;lib/persistence.jar;lib/jpqlparser.jar;lib/icom-bean.jar;lib/icom-bean-info.jar;lib/beehive-bean.jar;lib/beehive-bean-info.jar;lib/icom-beehive-bdk.jar;lib/icom-entity-manager-interface.jar;lib/icom-entity-manager.jar
+set JAVA_OPTS=-javaagent:lib/icom-weaver.jar -Xmx1024m

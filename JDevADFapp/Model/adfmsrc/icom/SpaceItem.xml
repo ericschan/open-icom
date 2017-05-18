@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="SpaceItem" Package="icom" BeanClass="icom.SpaceItem"
+          isJavaBased="true">
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="creationDate" IsUpdateable="0" Type="java.util.Date"/>
+  <Attribute Name="lastModificationDate" Type="java.util.Date"/>
+  <AccessorAttribute id="createdBy" IsCollection="false" BeanClass="icom.Actor"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="lastModifiedBy" IsCollection="false"
+                     BeanClass="icom.Actor"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="parent" IsCollection="false" BeanClass="icom.Container"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="id" IsCollection="false" BeanClass="icom.Id"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="changeToken" IsCollection="false"
+                     BeanClass="icom.ChangeToken"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+</JavaBean>

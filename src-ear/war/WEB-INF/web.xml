@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" 
+	version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/j2ee">
+    <description>ICOM Application</description>
+    <servlet>
+        <servlet-name>example-servlet</servlet-name>
+        <servlet-class>example.ExampleServlet</servlet-class>
+	<load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>example-servlet</servlet-name>
+        <url-pattern>/example</url-pattern>
+    </servlet-mapping>
+
+    <mime-mapping>
+        <extension>html</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>txt</extension>
+        <mime-type>text/plain</mime-type>
+    </mime-mapping>
+
+    <welcome-file-list>
+	<welcome-file>example</welcome-file> 
+    </welcome-file-list>
+
+        <ejb-local-ref>
+              <description>ICOM Session</description>
+	      <ejb-ref-name>ejb/iCOMSession</ejb-ref-name>
+              <ejb-ref-type>Session</ejb-ref-type>
+              <local>icom.session.SessionLocal</local> 
+       </ejb-local-ref>
+
+        
+        <ejb-local-ref>
+              <description>ICOM Facade</description>
+	      <ejb-ref-name>iCOMFacade</ejb-ref-name>
+              <ejb-ref-type>Session</ejb-ref-type>
+              <local>icom.session.FacadeLocal</local> 
+       </ejb-local-ref>
+ 
+</web-app>

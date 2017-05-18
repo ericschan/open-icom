@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth">
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.UnifiedMessage.collectionModel}" var="row"
+                  rows="#{bindings.UnifiedMessage.rangeSize}"
+                  emptyText="#{bindings.UnifiedMessage.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.UnifiedMessage.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.UnifiedMessage.collectionModel.selectedRow}"
+                  selectionListener="#{pageFlowScope.ListItemsHelperBean.selectTableRow}"
+                  rowSelection="single" id="t1">
+          <af:column sortProperty="subject" filterable="true" sortable="true"
+                     headerText="#{bindings.UnifiedMessage.hints.subject.label}"
+                     id="c7" width="250">
+            <af:inputText value="#{row.bindings.subject.inputValue}"
+                          label="#{bindings.UnifiedMessage.hints.subject.label}"
+                          required="#{bindings.UnifiedMessage.hints.subject.mandatory}"
+                          columns="#{bindings.UnifiedMessage.hints.subject.displayWidth}"
+                          maximumLength="#{bindings.UnifiedMessage.hints.subject.precision}"
+                          shortDesc="#{bindings.UnifiedMessage.hints.subject.tooltip}"
+                          id="it7">
+              <f:validator binding="#{row.bindings.subject.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="participantName" filterable="true"
+                     sortable="true"
+                     headerText="Sender"
+                     id="c2" width="150">
+            <af:inputText value="#{row.sender.bindings.participantName.inputValue}"
+                          label="#{bindings.UnifiedMessage.hints.sender.participantName.label}"
+                          required="#{bindings.UnifiedMessage.hints.sender.participantName.mandatory}"
+                          columns="#{bindings.UnifiedMessage.hints.sender.participantName.displayWidth}"
+                          maximumLength="#{bindings.UnifiedMessage.hints.sender.participantName.precision}"
+                          shortDesc="#{bindings.UnifiedMessage.hints.sender.participantName.tooltip}"
+                          id="it10">
+              <f:validator binding="#{row.sender.bindings.participantName.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="sentTime" filterable="true" sortable="true"
+                     headerText="#{bindings.UnifiedMessage.hints.sentTime.label}"
+                     id="c14">
+            <af:inputDate value="#{row.bindings.sentTime.inputValue}"
+                          label="#{bindings.UnifiedMessage.hints.sentTime.label}"
+                          required="#{bindings.UnifiedMessage.hints.sentTime.mandatory}"
+                          shortDesc="#{bindings.UnifiedMessage.hints.sentTime.tooltip}"
+                          id="id4" readOnly="true">
+              <f:validator binding="#{row.bindings.sentTime.validator}"/>
+              <af:convertDateTime pattern="#{bindings.UnifiedMessage.hints.sentTime.format}"
+                                  type="both"/>
+            </af:inputDate>
+          </af:column>
+          <af:column sortProperty="deliveredTime" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.UnifiedMessage.hints.deliveredTime.label}"
+                     id="c5">
+            <af:inputDate value="#{row.bindings.deliveredTime.inputValue}"
+                          label="#{bindings.UnifiedMessage.hints.deliveredTime.label}"
+                          required="#{bindings.UnifiedMessage.hints.deliveredTime.mandatory}"
+                          shortDesc="#{bindings.UnifiedMessage.hints.deliveredTime.tooltip}"
+                          id="id10" readOnly="true">
+              <f:validator binding="#{row.bindings.deliveredTime.validator}"/>
+              <af:convertDateTime pattern="#{bindings.UnifiedMessage.hints.deliveredTime.format}"
+                                  type="both"/>
+            </af:inputDate>
+          </af:column>
+          <af:column sortProperty="lastModificationDate" filterable="true"
+                     sortable="true"
+                     headerText="#{bindings.UnifiedMessage.hints.lastModificationDate.label}"
+                     id="c4">
+            <af:inputDate value="#{row.bindings.lastModificationDate.inputValue}"
+                          label="#{bindings.UnifiedMessage.hints.lastModificationDate.label}"
+                          required="#{bindings.UnifiedMessage.hints.lastModificationDate.mandatory}"
+                          shortDesc="#{bindings.UnifiedMessage.hints.lastModificationDate.tooltip}"
+                          id="id1" readOnly="true">
+              <f:validator binding="#{row.bindings.lastModificationDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.UnifiedMessage.hints.lastModificationDate.format}"
+                                  type="both"/>
+            </af:inputDate>
+          </af:column>
+          <af:column sortProperty="size" filterable="true" sortable="true"
+                     headerText="#{bindings.UnifiedMessage.hints.size.label}"
+                     id="c11">
+            <af:inputText value="#{row.bindings.size.inputValue}"
+                          label="#{bindings.UnifiedMessage.hints.size.label}"
+                          required="#{bindings.UnifiedMessage.hints.size.mandatory}"
+                          columns="#{bindings.UnifiedMessage.hints.size.displayWidth}"
+                          maximumLength="#{bindings.UnifiedMessage.hints.size.precision}"
+                          shortDesc="#{bindings.UnifiedMessage.hints.size.tooltip}"
+                          id="it5">
+              <f:validator binding="#{row.bindings.size.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.UnifiedMessage.hints.size.format}"/>
+            </af:inputText>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

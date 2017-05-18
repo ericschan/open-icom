@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="Document" Package="icom" BeanClass="icom.Document"
+          isJavaBased="true">
+  <Attribute Name="size" IsUpdateable="0" Type="java.lang.Long">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.Document.size_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="description" Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH Value="110"/>
+        <LABEL ResId="icom.Document.description_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="userCreationDate" Type="java.util.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.Document.userCreationDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="userLastModificationDate" Type="java.util.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.Document.userLastModificationDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="name" Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH Value="100"/>
+        <LABEL ResId="icom.Document.name_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="creationDate" IsUpdateable="0" Type="java.util.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.Document.creationDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="lastModificationDate" Type="java.util.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.Document.lastModificationDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="objectId" IsUpdateable="0" Type="java.lang.String"
+             PrimaryKey="true"/>
+  <AccessorAttribute id="content" IsCollection="false" BeanClass="icom.Content"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="versionControlMetadata" IsCollection="false"
+                     BeanClass="icom.VersionControlMetadata"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="versionType" IsCollection="false"
+                     BeanClass="icom.VersionType"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="parent" IsCollection="false" BeanClass="icom.Parental"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="relationships" IsCollection="true"
+                     RemoveMethod="removeRelationship"
+                     AddMethod="addRelationship" BeanClass="icom.Relationship"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeRelationship"/>
+      <Property Name="AddMethod" Value="addRelationship"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="properties" IsCollection="true"
+                     RemoveMethod="removeProperty" AddMethod="addProperty"
+                     BeanClass="icom.Property"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeProperty"/>
+      <Property Name="AddMethod" Value="addProperty"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="viewerProperties" IsCollection="true"
+                     RemoveMethod="removeProperty" AddMethod="addProperty"
+                     BeanClass="icom.Property"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeProperty"/>
+      <Property Name="AddMethod" Value="addProperty"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="id" IsCollection="false" BeanClass="icom.Id"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="changeToken" IsCollection="false"
+                     BeanClass="icom.ChangeToken"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="createdBy" IsCollection="false" BeanClass="icom.Actor"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="lastModifiedBy" IsCollection="false"
+                     BeanClass="icom.Actor"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="owner" IsCollection="false" BeanClass="icom.Owner"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="accessControlList" IsCollection="false"
+                     BeanClass="icom.AccessControlList"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="attachedMarkers" IsCollection="true"
+                     BeanClass="icom.Marker"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="categoryApplications" IsCollection="true"
+                     BeanClass="icom.CategoryApplication"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="tagApplications" IsCollection="true"
+                     BeanClass="icom.TagApplication"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="parentExtent" IsCollection="false"
+                     BeanClass="icom.Extent"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="boolean" id="isEditable"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="icom.Entity"
+                  BeanClass="icom.Entity" id="clone" ReturnNodeName="Document"/>
+  <MethodAccessor IsCollection="false" Type="void" id="delete"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addProperty"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="property" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeProperty"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="property" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addViewerProperty"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="property" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeViewerProperty"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="property" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="icom.Document"
+                     BeanClass="icom.Document" id="Document">
+    <ParameterInfo id="createdOn" Type="java.util.Date" isStructured="false"/>
+    <ParameterInfo id="userCreatedOn" Type="java.util.Date"
+                   isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.Document"
+                     BeanClass="icom.Document" id="Document">
+    <ParameterInfo id="parent" Type="icom.Container" isStructured="true"/>
+    <ParameterInfo id="createdOn" Type="java.util.Date" isStructured="false"/>
+    <ParameterInfo id="userCreatedOn" Type="java.util.Date"
+                   isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.Document"
+                     BeanClass="icom.Document" id="Document">
+    <ParameterInfo id="id" Type="icom.Id" isStructured="true"/>
+    <ParameterInfo id="parent" Type="icom.Container" isStructured="true"/>
+    <ParameterInfo id="createdOn" Type="java.util.Date" isStructured="false"/>
+    <ParameterInfo id="userCreatedOn" Type="java.util.Date"
+                   isStructured="false"/>
+  </ConstructorMethod>
+  <ResourceBundle>
+    <PropertiesBundle xmlns="http://xmlns.oracle.com/adfm/resourcebundle"
+                      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</JavaBean>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="UnifiedMessage" Package="icom" BeanClass="icom.UnifiedMessage"
+          isJavaBased="true">
+  <Attribute Name="sentTime" Type="java.util.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.UnifiedMessage.sentTime_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="subject" Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH Value="110"/>
+        <LABEL ResId="icom.UnifiedMessage.subject_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="contentId" Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.UnifiedMessage.contentId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="mediaType" Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.UnifiedMessage.mediaType_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="size" IsUpdateable="0" Type="java.lang.Long">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.UnifiedMessage.size_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="deliveredTime" IsUpdateable="0" Type="java.util.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.UnifiedMessage.deliveredTime_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="description" Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.UnifiedMessage.description_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="userCreationDate" Type="java.util.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.UnifiedMessage.userCreationDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="userLastModificationDate" Type="java.util.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.UnifiedMessage.userLastModificationDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="name" Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.UnifiedMessage.name_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="creationDate" IsUpdateable="0" Type="java.util.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.UnifiedMessage.creationDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="lastModificationDate" Type="java.util.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL ResId="icom.UnifiedMessage.lastModificationDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="objectId" IsUpdateable="0" Type="java.lang.String"
+             PrimaryKey="true"/>
+  <AccessorAttribute id="toReceivers" IsCollection="true"
+                     BeanClass="icom.UnifiedMessageParticipant"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="ccReceivers" IsCollection="true"
+                     BeanClass="icom.UnifiedMessageParticipant"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="bccReceivers" IsCollection="true"
+                     BeanClass="icom.UnifiedMessageParticipant"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="replyTo" IsCollection="true"
+                     BeanClass="icom.UnifiedMessageParticipant"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="priority" IsCollection="false"
+                     BeanClass="icom.Priority"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="flags" IsCollection="true"
+                     BeanClass="icom.UnifiedMessageFlagEnum"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="contentDisposition" IsCollection="false"
+                     BeanClass="icom.ContentDispositionType"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="channel" IsCollection="false"
+                     BeanClass="icom.UnifiedMessageChannel"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="mimeHeaders" IsCollection="true"
+                     RemoveMethod="removeProperty" AddMethod="addProperty"
+                     BeanClass="icom.Property"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeProperty"/>
+      <Property Name="AddMethod" Value="addProperty"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="messageDeliveryStatusNotificationRequests"
+                     IsCollection="true"
+                     BeanClass="icom.UnifiedMessageDeliveryStatusNotificationRequestEnum"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="sender" IsCollection="false"
+                     BeanClass="icom.Participant"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="content" IsCollection="false" BeanClass="icom.Content"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="parent" IsCollection="false" BeanClass="icom.Parental"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="relationships" IsCollection="true"
+                     RemoveMethod="removeRelationship"
+                     AddMethod="addRelationship" BeanClass="icom.Relationship"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeRelationship"/>
+      <Property Name="AddMethod" Value="addRelationship"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="properties" IsCollection="true"
+                     RemoveMethod="removeProperty" AddMethod="addProperty"
+                     BeanClass="icom.Property"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeProperty"/>
+      <Property Name="AddMethod" Value="addProperty"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="viewerProperties" IsCollection="true"
+                     RemoveMethod="removeProperty" AddMethod="addProperty"
+                     BeanClass="icom.Property"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeProperty"/>
+      <Property Name="AddMethod" Value="addProperty"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="id" IsCollection="false" BeanClass="icom.Id"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="changeToken" IsCollection="false"
+                     BeanClass="icom.ChangeToken"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="createdBy" IsCollection="false" BeanClass="icom.Actor"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="lastModifiedBy" IsCollection="false"
+                     BeanClass="icom.Actor"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="owner" IsCollection="false" BeanClass="icom.Owner"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="accessControlList" IsCollection="false"
+                     BeanClass="icom.AccessControlList"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="attachedMarkers" IsCollection="true"
+                     BeanClass="icom.Marker"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="categoryApplications" IsCollection="true"
+                     BeanClass="icom.CategoryApplication"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="tagApplications" IsCollection="true"
+                     BeanClass="icom.TagApplication"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="parentExtent" IsCollection="false"
+                     BeanClass="icom.Extent"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="envelopeSender" IsCollection="false"
+                     BeanClass="icom.Participant"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="editMode" IsCollection="false"
+                     BeanClass="icom.UnifiedMessageEditMode"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addToReceiver"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="participant" Type="icom.UnifiedMessageParticipant"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeToReceiver"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="participant" Type="icom.UnifiedMessageParticipant"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addCcReceiver"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="participant" Type="icom.UnifiedMessageParticipant"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeCcReceiver"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="participant" Type="icom.UnifiedMessageParticipant"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addBccReceiver"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="participant" Type="icom.UnifiedMessageParticipant"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeBccReceiver"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="participant" Type="icom.UnifiedMessageParticipant"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addReplyTo"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="participant" Type="icom.UnifiedMessageParticipant"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeReplyTo"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="participant" Type="icom.UnifiedMessageParticipant"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="setFlags"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="flags" Type="java.util.EnumSet" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="isEditable"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addMimeHeader"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="header" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeMimeHeader"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="headerName" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeMimeHeader"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="header" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.Boolean"
+                  id="isMessageDispositionNotificationRequested"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="setMessageDispositionNotificationRequested"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="mdnRequested" Type="java.lang.Boolean"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="icom.Entity"
+                  BeanClass="icom.Entity" id="clone"
+                  ReturnNodeName="UnifiedMessage"/>
+  <MethodAccessor IsCollection="false" Type="void" id="delete"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addProperty"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="property" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeProperty"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="property" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addViewerProperty"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="property" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeViewerProperty"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="property" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addFlag"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="flag" Type="icom.UnifiedMessageFlagEnum"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeFlag"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="flag" Type="icom.UnifiedMessageFlagEnum"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="icom.UnifiedMessage"
+                     BeanClass="icom.UnifiedMessage" id="UnifiedMessage">
+    <ParameterInfo id="createdOn" Type="java.util.Date" isStructured="false"/>
+    <ParameterInfo id="userCreatedOn" Type="java.util.Date"
+                   isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.UnifiedMessage"
+                     BeanClass="icom.UnifiedMessage" id="UnifiedMessage">
+    <ParameterInfo id="parent" Type="icom.HeterogeneousFolder"
+                   isStructured="true"/>
+    <ParameterInfo id="createdOn" Type="java.util.Date" isStructured="false"/>
+    <ParameterInfo id="userCreatedOn" Type="java.util.Date"
+                   isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.UnifiedMessage"
+                     BeanClass="icom.UnifiedMessage" id="UnifiedMessage">
+    <ParameterInfo id="id" Type="icom.Id" isStructured="true"/>
+    <ParameterInfo id="parent" Type="icom.HeterogeneousFolder"
+                   isStructured="true"/>
+    <ParameterInfo id="createdOn" Type="java.util.Date" isStructured="false"/>
+    <ParameterInfo id="userCreatedOn" Type="java.util.Date"
+                   isStructured="false"/>
+  </ConstructorMethod>
+  <ResourceBundle>
+    <PropertiesBundle xmlns="http://xmlns.oracle.com/adfm/resourcebundle"
+                      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</JavaBean>

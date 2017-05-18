@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="PropertyChoiceType" Package="icom"
+          BeanClass="icom.PropertyChoiceType" isJavaBased="true">
+  <Attribute Name="displayName" Type="java.lang.String"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="value" Type="java.lang.Object"/>
+  <MethodAccessor IsCollection="false" Type="icom.PropertyChoiceType"
+                  BeanClass="icom.PropertyChoiceType" id="clone"
+                  ReturnNodeName="PropertyChoiceType"/>
+  <ConstructorMethod IsCollection="true" Type="icom.PropertyChoiceType"
+                     BeanClass="icom.PropertyChoiceType"
+                     id="PropertyChoiceType">
+    <ParameterInfo id="displayName" Type="java.lang.String"
+                   isStructured="false"/>
+    <ParameterInfo id="value" Type="java.lang.Object" isStructured="false"/>
+  </ConstructorMethod>
+</JavaBean>

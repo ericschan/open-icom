@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="list-documents-task-flow-definition">
+    <default-activity id="__1">Documents</default-activity>
+    <input-parameter-definition id="__3">
+      <name id="__2">containerId</name>
+      <value>#{pageFlowScope.containerId}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__8">
+      <name id="__7">callback</name>
+      <value>#{pageFlowScope.callback}</value>
+      <class>view.ExploreSpacesHelperBean</class>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__5">
+      <managed-bean-name id="__6">ListItemsHelperBean</managed-bean-name>
+      <managed-bean-class>taskflow.ListDocumentsHelperBean</managed-bean-class>
+      <managed-bean-scope id="__4">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="Documents">
+      <page>/ListDocuments.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

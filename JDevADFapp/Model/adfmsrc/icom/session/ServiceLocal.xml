@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="ServiceLocal" Package="icom.session"
+          BeanClass="icom.session.ServiceLocal" isJavaBased="true">
+  <AccessorAttribute id="spaces" IsCollection="true" BeanClass="icom.Space"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="credential" IsCollection="false"
+                     BeanClass="icom.session.Credential"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="true" Type="icom.Space" BeanClass="icom.Space"
+                  id="getSpaces" ReturnNodeName="Space"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="contextid" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="icom.Artifact"
+                  BeanClass="icom.Artifact" id="getArtifacts"
+                  ReturnNodeName="Artifact"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="objectid" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="icom.Document"
+                  BeanClass="icom.Document" id="getDocument"
+                  ReturnNodeName="Document">
+    <ParameterInfo id="objectid" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="icom.UnifiedMessage"
+                  BeanClass="icom.UnifiedMessage" id="getUnifiedMessage"
+                  ReturnNodeName="UnifiedMessage">
+    <ParameterInfo id="objectid" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="icom.Artifact"
+                  BeanClass="icom.Artifact" id="getArtifact"
+                  ReturnNodeName="Artifact">
+    <ParameterInfo id="objectid" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="icom.UnifiedMessage"
+                  BeanClass="icom.UnifiedMessage" id="getUnifiedMessages"
+                  ReturnNodeName="UnifiedMessage"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="objectid" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="icom.Document"
+                  BeanClass="icom.Document" id="getDocuments"
+                  ReturnNodeName="Document"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="objectid" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="icom.SimpleContent"
+                  BeanClass="icom.SimpleContent" id="getSimpleContent"
+                  ReturnNodeName="SimpleContent">
+    <ParameterInfo id="objectid" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="commit"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void" id="rollback"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void" id="close"
+                  ReturnNodeName="Return"/>
+</JavaBean>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="Addressable" Package="icom" BeanClass="icom.Addressable"
+          isJavaBased="true">
+  <Attribute Name="name" IsUpdateable="0" Type="java.lang.String"/>
+  <AccessorAttribute id="addresses" IsCollection="true"
+                     BeanClass="icom.EntityAddress"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="primaryAddress" IsCollection="false"
+                     BeanClass="icom.EntityAddress"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="id" IsCollection="false" BeanClass="icom.Id"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="changeToken" IsCollection="false"
+                     BeanClass="icom.ChangeToken"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+</JavaBean>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="ViewArtifactPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getArtifact.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.Artifact"
+                    id="getArtifactIterator"/>
+    <accessorIterator MasterBinding="getArtifactIterator" Binds="changeToken"
+                      RangeSize="25" DataControl="ServiceLocal"
+                      BeanClass="icom.ChangeToken" id="changeTokenIterator"/>
+    <accessorIterator MasterBinding="getArtifactIterator" Binds="createdBy"
+                      RangeSize="25" DataControl="ServiceLocal"
+                      BeanClass="icom.Actor" id="createdByIterator"/>
+    <accessorIterator MasterBinding="getArtifactIterator" Binds="lastModifiedBy"
+                      RangeSize="25" DataControl="ServiceLocal"
+                      BeanClass="icom.Actor" id="lastModifiedByIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getArtifact" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getArtifact"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getArtifact_ServiceLocal_dataProvider_getArtifact_result">
+      <NamedData NDName="objectid" NDValue="#{pageFlowScope.itemId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="getArtifactIterator" id="description">
+      <AttrNames>
+        <Item Value="description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactIterator" id="userCreationDate">
+      <AttrNames>
+        <Item Value="userCreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactIterator"
+                     id="userLastModificationDate">
+      <AttrNames>
+        <Item Value="userLastModificationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactIterator" id="name">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactIterator" id="creationDate">
+      <AttrNames>
+        <Item Value="creationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactIterator"
+                     id="lastModificationDate">
+      <AttrNames>
+        <Item Value="lastModificationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactIterator" id="objectId">
+      <AttrNames>
+        <Item Value="objectId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="changeTokenIterator" id="token">
+      <AttrNames>
+        <Item Value="token"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="createdByIterator" id="name2">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="lastModifiedByIterator" id="name3">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

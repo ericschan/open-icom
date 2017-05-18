@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="Participant" Package="icom" BeanClass="icom.Participant"
+          isJavaBased="true">
+  <Attribute Name="name" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="participantName" IsUpdateable="0" Type="java.lang.String"/>
+  <AccessorAttribute id="participant" IsCollection="false"
+                     BeanClass="icom.Addressable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="address" IsCollection="false" BeanClass="java.net.URI"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="icom.Participant"
+                  BeanClass="icom.Participant" id="clone"
+                  ReturnNodeName="Participant"/>
+  <ConstructorMethod IsCollection="true" Type="icom.Participant"
+                     BeanClass="icom.Participant" id="Participant">
+    <ParameterInfo id="address" Type="java.net.URI" isStructured="true"/>
+    <ParameterInfo id="name" Type="java.lang.String" isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.Participant"
+                     BeanClass="icom.Participant" id="Participant">
+    <ParameterInfo id="participant" Type="icom.Addressable"
+                   isStructured="true"/>
+  </ConstructorMethod>
+</JavaBean>

@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:panelSplitter id="ps1" splitterPosition="269">
+          <f:facet name="first">
+            <af:panelStretchLayout id="psl1">
+              <f:facet name="center">
+                <af:region value="#{bindings.browseContainersDynamicRegion.regionModel}"
+                           id="r1"
+                           binding="#{viewScope.ExploreSpacesHelperBean.browseContainersRegion}"/>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="second">
+            <af:panelSplitter id="ps2" orientation="vertical"
+                              splitterPosition="353">
+              <f:facet name="first">
+                <af:panelStretchLayout id="psl2">
+                  <f:facet name="center">
+                    <af:group id="g1">
+                      <af:commandLink text="Logout" id="cl1" action="close"/>
+                      <af:navigationPane id="np1" hint="tabs">
+                        <af:commandNavigationItem text="Artifacts View"
+                                                  action="#{viewScope.ListItemsRegionBean.listartifactstaskflowdefinition}"
+                                                  id="cn1"/>
+                        <af:commandNavigationItem text="Documents View"
+                                                  action="#{viewScope.ListItemsRegionBean.listdocumentstaskflowdefinition}"
+                                                  id="cn2"/>
+                        <af:commandNavigationItem text="Unified Messages View"
+                                                  action="#{viewScope.ListItemsRegionBean.listunifiedmessagestaskflowdefinition}"
+                                                  id="cn3"/>
+                      </af:navigationPane>
+                      <af:region value="#{bindings.listItemsDynamicRegion.regionModel}"
+                                 id="r2"
+                                 partialTriggers="::np1:cn1 ::np1:cn2 ::np1:cn3"
+                                 binding="#{viewScope.ExploreSpacesHelperBean.listItemsRegion}"/>
+                    </af:group>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </f:facet>
+              <f:facet name="second">
+                <af:panelStretchLayout id="psl3">
+                  <f:facet name="center">
+                      <af:region value="#{bindings.viewItemDynamicRegion.regionModel}"
+                                 id="r3" partialTriggers="::r1 ::r2"
+                                 binding="#{viewScope.ExploreSpacesHelperBean.viewItemRegion}"/>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </f:facet>
+            </af:panelSplitter>
+          </f:facet>
+        </af:panelSplitter>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

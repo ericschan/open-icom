@@ -1,0 +1,103 @@
+<project name="icom-bean-info" default="jar" basedir="." >
+  <description>Ant build script for icom project.</description> 
+ 
+  <import file="../ant-icom.xml"/>
+  <property environment="env"/>
+
+  <import file="../build_properties.xml"/>
+  
+  <property name="log.dir" value="./log" />
+  <property name="compile-warnings" value="none"/>
+  <property name="compile.debug" value="on"/>
+  
+    <!--Set classpath vars as required -->
+    <path id="project.classpath">
+      <pathelement location="../lib/persistence.jar"/>
+      <pathelement location="../lib/jpqlparser.jar"/>
+      <pathelement location="../lib/icom-entity-manager-interface.jar"/>
+      <pathelement location="../lib/icom-entity-manager.jar"/>
+      <pathelement path="${classes.dir}/java"/>        
+      
+    </path>
+
+    <target name="init">
+        <!--Create the time stamp --> 
+        <tstamp />
+        <!--Create the build directory structure used by compile --> 
+        <mkdir dir="${outdir}" /> 
+        <mkdir dir="${intdir}" />
+    </target>
+
+    <target name="compile_init" depends="init">
+	<mkdir dir="${classes.dir}" />
+	<mkdir dir="${classes.dir}/java" />    
+    </target>
+  
+    <target name="compile-beans-info" depends="compile_init" description="compile the source">
+        <!-- By default debug is off i.e. shippable build -->
+        <condition property="compile.debug" value="off">
+            <not><isset property="compile.debug"/></not>
+        </condition>
+        <!-- By default optimize is on i.e. shippable build -->
+        <condition property="compile.optimize" value="on">
+            <not><isset property="compile.optimize"/></not>
+        </condition>
+	<depend srcdir="${src}"
+		destdir="${classes.dir}/java"
+              cache="${cache.dir}"/>
+        <echo>
+            Compiling the source with the following options
+	    Source Directory        : ${src}
+            Destination Directory   : ${classes.dir}
+            Debug                   : ${compile.debug}
+            Optimize                : ${compile.optimize}
+            Nowarn                  : ${compile.nowarn}
+            Decprecation            : ${compile.deprecation}
+        </echo>
+        <!--Compile the java code from ${src} into ${intdir}  --> 
+        <javac deprecation="${compile.deprecation}"
+               debug="${compile.debug}"
+               nowarn="${compile.nowarn}"
+               optimize="${compile.optimize}"
+	       srcdir="${src}"
+	       destdir="${classes.dir}/java">
+            <classpath refid="project.classpath" /> 
+            <compilerarg value="-Xlint" />
+        </javac>
+    </target>
+    
+    <target name="jar" depends="compile-beans-info" 
+            description="Generate project's JAR file">
+        <mkdir dir="${jlib.dir}" /> 
+
+	<jar jarfile="${icom-bean-info.jar}" basedir="${classes.dir}/java">
+            <!--Manifest section --> 
+            <manifest>
+               <attribute name="Implementation-Title" value="${Implementation-Title}"/>
+	       <attribute name="Implementation-Version" value="${Implementation-Version}" />
+               <attribute name="Implementation-Vendor" value="${Implementation-Vendor}"/>
+                <!-- add required manifest information here -->
+            </manifest>
+        </jar>
+	
+        <condition property="file.size.check">
+		<length file="${icom-bean-info.jar}" when="greater" length="0"/>
+        </condition>
+        <!-- fail if file.size.check value is unset -->
+        <fail unless="file.size.check" 
+              message="${icom-bean-info.jar} does not exist or is of zero size"/> 
+      </target>
+
+      <target name="lib" depends="jar">
+         <copy file="${icom-bean-info.jar}"
+               tofile="../lib/icom-bean-info.jar"/>
+     </target>
+      
+	<target name="clean" description="clean up">
+		<delete  quiet="true" failonerror="false" includeEmptyDirs="true"> 
+			<fileset dir="${outdir}" /> 
+        		<fileset dir="${intdir}" /> 
+		</delete>
+	</target>
+
+</project>

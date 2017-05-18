@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="PropertyDefinition" Package="icom"
+          BeanClass="icom.PropertyDefinition" isJavaBased="true">
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="defaultValue" Type="java.lang.Object"/>
+  <Attribute Name="minValue" Type="java.lang.Object"/>
+  <Attribute Name="maxValue" Type="java.lang.Object"/>
+  <Attribute Name="namespace" Type="java.lang.String"/>
+  <AccessorAttribute id="id" IsCollection="false" BeanClass="icom.Id"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="changeToken" IsCollection="false"
+                     BeanClass="icom.ChangeToken"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="propertyType" IsCollection="false"
+                     BeanClass="icom.PropertyType"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="cardinality" IsCollection="false"
+                     BeanClass="icom.Cardinality"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="choices" IsCollection="true"
+                     BeanClass="icom.PropertyChoiceType"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addChoice"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="propertyChoice" Type="icom.PropertyChoiceType"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeChoice"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="propertyChoice" Type="icom.PropertyChoiceType"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.Boolean" id="isQueryable"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void" id="setQueryable"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="queryable" Type="java.lang.Boolean"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="icom.PropertyDefinition"
+                  BeanClass="icom.PropertyDefinition" id="clone"
+                  ReturnNodeName="PropertyDefinition"/>
+  <ConstructorMethod IsCollection="true" Type="icom.PropertyDefinition"
+                     BeanClass="icom.PropertyDefinition"
+                     id="PropertyDefinition">
+    <ParameterInfo id="name" Type="java.lang.String" isStructured="false"/>
+  </ConstructorMethod>
+</JavaBean>

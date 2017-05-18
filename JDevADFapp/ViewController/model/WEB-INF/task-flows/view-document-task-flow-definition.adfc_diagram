@@ -1,0 +1,65 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">ViewDocument</property>
+      <property
+         name="start">true</property>
+      <property
+         name="page">/ViewDocument.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ViewDocument&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="trainStop">false</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">128.09766</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">107.350586</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">ViewSimpleContent</property>
+      <property
+         name="page">/ViewSimpleContent.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ViewSimpleContent&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="trainStop">false</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">128.39648</property>
+      <property
+         name="x">360.35938</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View2"
+      to="View3">
+      <property
+         name="fromOutcome">next</property>
+      <property
+         name="sdm:polyPoints">R46,148.3567,124.24707,319.35938,124.5459,L46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">next</property>
+      <property
+         name="sdm:polyPoints">L54,319.35327,131.5459,148.35059,131.24707,R54</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.60.13" id="DataBindings" SeparateXMLFiles="false"
+             Package="view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/BrowseSpaces.jspx" usageId="view_BrowseSpacesPageDef"/>
+    <page path="/ExploreSpaces.jspx" usageId="view_ExploreSpacesPageDef"/>
+    <page path="/BrowseContainers.jsff" usageId="view_BrowseContainersPageDef"/>
+    <page path="/ListArtifacts.jsff" usageId="view_ListArtifactsPageDef"/>
+    <page path="/ListDocuments.jsff" usageId="view_ListDocumentsPageDef"/>
+    <page path="/ListUnifiedMessages.jsff" usageId="view_ListUnifiedMessagesPageDef"/>
+    <page path="/ViewArtifact.jsff" usageId="view_ViewArtifactPageDef"/>
+    <page path="/ViewDocument.jsff" usageId="view_ViewDocumentPageDef"/>
+    <page path="/ViewUnifiedMessage.jsff" usageId="view_ViewUnifiedMessagePageDef"/>
+    <page path="/ViewSimpleContent.jsff" usageId="view_ViewSimpleContentPageDef"/>
+    <page path="/EnterCredential.jspx" usageId="view_EnterCredentialPageDef"/>
+    <page path="/WEB-INF/task-flows/icom-tfd.xml#icom-tfd@close"
+          usageId="view_icom_tfd_closePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_BrowseSpacesPageDef" path="view.pageDefs.BrowseSpacesPageDef"/>
+    <page id="view_ExploreSpacesPageDef" path="view.pageDefs.ExploreSpacesPageDef"/>
+    <page id="view_BrowseContainersPageDef" path="view.pageDefs.BrowseContainersPageDef"/>
+    <page id="view_ListArtifactsPageDef" path="view.pageDefs.ListArtifactsPageDef"/>
+    <page id="view_ListDocumentsPageDef" path="view.pageDefs.ListDocumentsPageDef"/>
+    <page id="view_ListUnifiedMessagesPageDef" path="view.pageDefs.ListUnifiedMessagesPageDef"/>
+    <page id="view_ViewArtifactPageDef" path="view.pageDefs.ViewArtifactPageDef"/>
+    <page id="view_ViewDocumentPageDef" path="view.pageDefs.ViewDocumentPageDef"/>
+    <page id="view_ViewUnifiedMessagePageDef" path="view.pageDefs.ViewUnifiedMessagePageDef"/>
+    <page id="view_ViewSimpleContentPageDef" path="view.pageDefs.ViewSimpleContentPageDef"/>
+    <page id="view_EnterCredentialPageDef" path="view.pageDefs.EnterCredentialPageDef"/>
+    <page id="view_icom_tfd_closePageDef" path="taskflow.icom_tfd_closePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="ServiceLocal" path="model.ServiceLocal"/>
+  </dataControlUsages>
+</Application>

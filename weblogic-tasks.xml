@@ -1,0 +1,55 @@
+<project name="weblogic-tasks">
+  <description>Ant build script for icom project.</description> 
+
+  <property name="weblogic.server.lib" value="H:/WLS11gR1/wlserver_10.3/server/lib"/>
+  <condition property="weblogic.server.lib.valid">
+    <and>
+      <resourceexists>
+         <file file="${weblogic.server.lib}/weblogic.jar"/>
+      </resourceexists>
+      <length file="${weblogic.server.lib}/weblogic.jar" when="greater" length="0"/>
+    </and>
+  </condition>
+
+  <property name="jaxb.lib" value="H:\jaxb-ri-20110115\lib"/>
+  <condition property="jaxb.lib.valid">
+    <and>
+      <resourceexists>
+         <file file="${jaxb.lib}/jaxb-impl.jar"/>
+      </resourceexists>
+     <length file="${jaxb.lib}/jaxb-impl.jar" when="greater" length="0"/>
+    </and>
+  </condition>
+
+    <!--Set classpath vars as required -->
+    <path id="weblogic.classpath">
+       <pathelement location="${weblogic.server.lib}/weblogic.jar"/>
+       <pathelement location="${weblogic.server.lib}/webservices.jar"/>
+       <pathelement location="${weblogic.server.lib}/wsse.jar"/>
+       <pathelement location="${weblogic.server.lib}/weblogic-container-binding.jar"/>
+       <pathelement location="${weblogic.server.lib}/webserviceclient.jar"/>
+       <pathelement location="${weblogic.server.lib}/xbean.jar"/>
+       <pathelement location="${weblogic.server.lib}/apache_xbean.jar"/>
+    </path>
+
+    <path id="jaxb.classpath">
+       <pathelement location="${jaxb.lib}/jaxb-impl.jar"/>
+       <pathelement location="${jaxb.lib}/jaxb1-impl.jar"/>
+       <pathelement location="${jaxb.lib}/jaxb-api.jar"/>
+       <pathelement location="${jaxb.lib}/jaxb-xjc.jar"/>
+       <pathelement location="${jaxb.lib}/jsr173_1.0_api.jar"/>
+    </path>
+
+    <target name="jwsc" if="weblogic.server.lib.valid" >
+      <taskdef name="jwsc" classname="weblogic.wsee.tools.anttasks.JwscTask">
+          <classpath refid="weblogic.classpath"/>
+       </taskdef>
+    </target>
+
+    <target name="schemagen" if="jaxb.lib.valid" >  
+       <taskdef name="schemagen" classname="com.sun.tools.jxc.SchemaGenTask">
+          <classpath refid="jaxb.classpath"/>
+       </taskdef>
+    </target>
+
+</project>

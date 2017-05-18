@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="ViewSimpleContentPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getSimpleContent.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.SimpleContent"
+                    id="getSimpleContentIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getSimpleContent" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getSimpleContent"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getSimpleContent_ServiceLocal_dataProvider_getSimpleContent_result">
+      <NamedData NDName="objectid" NDValue="#{pageFlowScope.itemId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="getSimpleContentIterator"
+                     id="contentEncoding">
+      <AttrNames>
+        <Item Value="contentEncoding"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getSimpleContentIterator"
+                     id="characterEncoding">
+      <AttrNames>
+        <Item Value="characterEncoding"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getSimpleContentIterator" id="contentLength">
+      <AttrNames>
+        <Item Value="contentLength"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getSimpleContentIterator"
+                     id="contentLanguage">
+      <AttrNames>
+        <Item Value="contentLanguage"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getSimpleContentIterator" id="contentId">
+      <AttrNames>
+        <Item Value="contentId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getSimpleContentIterator" id="mediaType">
+      <AttrNames>
+        <Item Value="mediaType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getSimpleContentIterator" id="content">
+      <AttrNames>
+        <Item Value="content"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

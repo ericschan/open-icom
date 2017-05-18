@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="ExploreSpacesPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="browseContainersDynamicRegion"
+              taskFlowId="${viewScope.BrowseContainersRegionBean.dynamicTaskFlowId}"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"
+              Refresh="ifNeeded">
+      <parameters>
+        <parameter id="contextId"
+                   value="#{viewScope.ExploreSpacesHelperBean.contextId}"/>
+        <parameter id="callback" value="#{viewScope.ExploreSpacesHelperBean}"
+                   xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="listItemsDynamicRegion"
+              taskFlowId="${viewScope.ListItemsRegionBean.dynamicTaskFlowId}"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"
+              Refresh="ifNeeded">
+      <parameters>
+        <parameter id="containerId"
+                   value="#{viewScope.ExploreSpacesHelperBean.containerId}"/>
+        <parameter id="callback" value="#{viewScope.ExploreSpacesHelperBean}"
+                   xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="viewItemDynamicRegion"
+              taskFlowId="${viewScope.ViewItemRegionBean.dynamicTaskFlowId}"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"
+              Refresh="ifNeeded">
+      <parameters>
+        <parameter id="itemId"
+                   value="#{viewScope.ExploreSpacesHelperBean.itemId}"/>
+        <parameter id="itemType"
+                   value="#{viewScope.ExploreSpacesHelperBean.itemType}"
+                   xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+        <parameter id="callback" value="#{viewScope.ExploreSpacesHelperBean}"
+                   xmlns="http://xmlns.oracle.com/adfm/uimodel"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>

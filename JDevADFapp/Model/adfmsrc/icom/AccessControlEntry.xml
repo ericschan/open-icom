@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="AccessControlEntry" Package="icom"
+          BeanClass="icom.AccessControlEntry" isJavaBased="true">
+  <AccessorAttribute id="subject" IsCollection="false" BeanClass="icom.Accessor"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="grants" IsCollection="true" BeanClass="icom.AccessType"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="denies" IsCollection="true" BeanClass="icom.AccessType"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addGrant"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="accessType" Type="icom.AccessType" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeGrant"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="accessType" Type="icom.AccessType" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addDeny"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="accessType" Type="icom.AccessType" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeDeny"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="accessType" Type="icom.AccessType" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="icom.AccessControlEntry"
+                  BeanClass="icom.AccessControlEntry" id="clone"
+                  ReturnNodeName="AccessControlEntry"/>
+  <ConstructorMethod IsCollection="true" Type="icom.AccessControlEntry"
+                     BeanClass="icom.AccessControlEntry"
+                     id="AccessControlEntry"/>
+</JavaBean>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="ListArtifactsPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getArtifacts.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.Artifact"
+                    id="getArtifactsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getArtifacts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getArtifacts"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getArtifacts_ServiceLocal_dataProvider_getArtifacts_result">
+      <NamedData NDName="objectid" NDValue="#{pageFlowScope.containerId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="getArtifactsIterator" id="Artifact">
+      <nodeDefinition DefName="icom.Artifact" Name="Artifact0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="description"/>
+          <Item Value="creationDate"/>
+          <Item Value="lastModificationDate"/>
+          <Item Value="userCreationDate"/>
+          <Item Value="userLastModificationDate"/>
+          <Item Value="objectId"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="createdBy"/>
+          <Item Value="lastModifiedBy"/>
+          <Item Value="changeToken"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="icom.Actor" Name="Artifact1">
+        <AttrNames>
+          <Item Value="description"/>
+          <Item Value="name"/>
+          <Item Value="creationDate"/>
+          <Item Value="lastModificationDate"/>
+          <Item Value="objectId"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="icom.ChangeToken" Name="Artifact2">
+        <AttrNames>
+          <Item Value="token"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

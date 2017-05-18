@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration"
+                    version="11.1.1.60.13" id="DataControls" Package="model">
+  <AdapterDataControl id="ServiceLocal"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.ejb.EjbDefinition"
+                      SupportsTransactions="true" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="icom.session.ServiceLocal"
+                      BeanClass="icom.session.ServiceLocal"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="java.security.PermissionCollection"/>
+      <TypeInfo FullName="java.security.Permission"/>
+      <TypeInfo FullName="java.io.InputStream"/>
+      <TypeInfo FullName="java.io.OutputStream"/>
+      <TypeInfo FullName="java.net.ContentHandler"/>
+      <TypeInfo FullName="java.net.SocketAddress"/>
+      <TypeInfo FullName="java.net.Proxy"/>
+      <TypeInfo FullName="java.net.URLStreamHandler"/>
+      <TypeInfo FullName="java.net.URL"/>
+      <TypeInfo FullName="java.net.URI"/>
+      <TypeInfo FullName="icom.Id"/>
+      <TypeInfo FullName="icom.ChangeToken"/>
+      <TypeInfo FullName="icom.PropertyChoiceType"/>
+      <TypeInfo FullName="icom.PropertyDefinition"/>
+      <TypeInfo FullName="icom.Property"/>
+      <TypeInfo FullName="icom.Artifact"/>
+      <TypeInfo FullName="icom.Tag"/>
+      <TypeInfo FullName="icom.TagApplication"/>
+      <TypeInfo FullName="icom.Category"/>
+      <TypeInfo FullName="icom.CategoryApplication"/>
+      <TypeInfo FullName="icom.Entity"/>
+      <TypeInfo FullName="icom.Role"/>
+      <TypeInfo FullName="icom.AccessControlEntry"/>
+      <TypeInfo FullName="icom.AccessControlList"/>
+      <TypeInfo FullName="icom.RoleDefinition"/>
+      <TypeInfo FullName="icom.Scope"/>
+      <TypeInfo FullName="icom.EntityAddress"/>
+      <TypeInfo FullName="icom.Group"/>
+      <TypeInfo FullName="icom.RelationshipDefinition"/>
+      <TypeInfo FullName="icom.Relationship"/>
+      <TypeInfo FullName="icom.Community"/>
+      <TypeInfo FullName="icom.Actor"/>
+      <TypeInfo FullName="icom.Folder"/>
+      <TypeInfo FullName="icom.Space"/>
+      <TypeInfo FullName="icom.Document"/>
+      <TypeInfo FullName="icom.Participant"/>
+      <TypeInfo FullName="icom.UnifiedMessageParticipant"/>
+      <TypeInfo FullName="icom.Message"/>
+      <TypeInfo FullName="icom.UnifiedMessage"/>
+      <TypeInfo FullName="icom.HeterogeneousFolder"/>
+      <TypeInfo FullName="icom.session.Credential"/>
+      <TypeInfo FullName="java.io.File"/>
+      <TypeInfo FullName="icom.SimpleContent"/>
+    </CreatableTypes>
+    <Source>
+      <ejb-definition ejb-version="3.0" ejb-name="iCOMService"
+                      ejb-type="Session"
+                      ejb-business-interface="icom.session.ServiceLocal"
+                      ejb-interface-type="local"
+                      initial-context-factory="weblogic.jndi.WLInitialContextFactory"
+                      xmlns="http://xmlns.oracle.com/adfm/adapter/ejb"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

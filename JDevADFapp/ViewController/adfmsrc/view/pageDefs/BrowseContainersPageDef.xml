@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="BrowseContainersPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ServiceLocal"
+              id="ServiceLocalIterator"/>
+    <methodIterator Binds="getSpaces.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.Space"
+                    id="getSpacesIterator"/>
+  </executables>
+  <bindings>
+  <methodAction id="getSpaces" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getSpaces"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getSpaces_ServiceLocal_dataProvider_getSpaces_result">
+      <NamedData NDName="contextid" NDValue="#{pageFlowScope.contextId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="getSpacesIterator" id="spaces">
+      <nodeDefinition DefName="icom.Space" Name="spaces0">
+        <AttrNames>
+          <Item Value="name"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="folders"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="icom.Folder" Name="spaces1">
+        <AttrNames>
+          <Item Value="name"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="folders"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

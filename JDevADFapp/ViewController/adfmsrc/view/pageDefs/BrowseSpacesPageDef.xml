@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="BrowseSpacesPageDef" Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="ServiceLocal"
+              id="ServiceLocalIterator"/>
+    <accessorIterator MasterBinding="ServiceLocalIterator" Binds="spaces"
+                      RangeSize="25" DataControl="ServiceLocal"
+                      BeanClass="icom.Space" id="spacesIterator"/>
+    <methodIterator Binds="getArtifacts.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.Artifact"
+                    id="getArtifactsIterator"/>
+    <methodIterator Binds="getUnifiedMessages.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.UnifiedMessage"
+                    id="getUnifiedMessagesIterator"/>
+    <methodIterator Binds="getArtifact.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.Artifact"
+                    id="getArtifactIterator"/>
+    <methodIterator Binds="getDocument.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.Document"
+                    id="getDocumentIterator"/>
+    <methodIterator Binds="getUnifiedMessage.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.UnifiedMessage"
+                    id="getUnifiedMessageIterator"/>
+                    
+    <accessorIterator MasterBinding="getUnifiedMessageIterator" Binds="sender"
+                    RangeSize="25" DataControl="ServiceLocal"
+                    BeanClass="icom.Participant" id="senderIterator"/>
+    <accessorIterator MasterBinding="getUnifiedMessageIterator" Binds="envelopSender"
+                    RangeSize="25" DataControl="ServiceLocal"
+                    BeanClass="icom.Participant" id="envelopSenderIterator"/>
+                      
+    <accessorIterator MasterBinding="getArtifactIterator" Binds="changeToken"
+                      RangeSize="25" DataControl="ServiceLocal"
+                      BeanClass="icom.ChangeToken" id="changeTokenIterator1"/>
+    <accessorIterator MasterBinding="getDocumentIterator" Binds="changeToken"
+                      RangeSize="25" DataControl="ServiceLocal"
+                      BeanClass="icom.ChangeToken" id="changeTokenIterator2"/>
+    <accessorIterator MasterBinding="getUnifiedMessageIterator" Binds="changeToken"
+                      RangeSize="25" DataControl="ServiceLocal"
+                      BeanClass="icom.ChangeToken" id="changeTokenIterator3"/>
+
+  </executables>
+  
+  <bindings>
+    <tree IterBinding="spacesIterator" id="spaces">
+      <nodeDefinition DefName="icom.Space" Name="spaces0">
+        <AttrNames>
+          <Item Value="name"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="folders"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="icom.Folder" Name="spaces1">
+        <AttrNames>
+          <Item Value="name"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="folders"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    
+    <methodAction id="getArtifacts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getArtifacts"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getArtifacts_ServiceLocal_dataProvider_getArtifacts_result">
+      <NamedData NDName="objectid"
+                 NDValue="#{viewScope.BrowseSpacesHelperBean.containerId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="getArtifactsIterator" id="Artifact">
+      <nodeDefinition DefName="icom.Artifact" Name="Artifact0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="description"/>
+          <Item Value="lastModificationDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    
+    <methodAction id="getUnifiedMessages" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getUnifiedMessages"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getUnifiedMessages_ServiceLocal_dataProvider_getUnifiedMessages_result">
+      <NamedData NDName="objectid"
+                 NDValue="#{viewScope.BrowseSpacesHelperBean.containerId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="getUnifiedMessagesIterator" id="UnifiedMessage">
+      <nodeDefinition DefName="icom.UnifiedMessage" Name="UnifiedMessage0">
+        <AttrNames>
+          <Item Value="subject"/>
+          <Item Value="sentTime"/>
+          <Item Value="deliveredTime"/>
+          <Item Value="size"/>
+          <Item Value="objectId"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="sender"/>
+          <Item Value="changeToken"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="icom.Participant" Name="UnifiedMessage0">
+        <AttrNames>
+          <Item Value="participantName"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="icom.ChangeToken" Name="UnifiedMessage0">
+        <AttrNames>
+          <Item Value="token"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    
+    <methodAction id="getArtifact" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getArtifact"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getArtifact_ServiceLocal_dataProvider_getArtifact_result">
+      <NamedData NDName="objectid"
+                 NDValue="#{viewScope.BrowseSpacesHelperBean.itemId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="getArtifactIterator" id="name1">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactIterator" id="description1">
+      <AttrNames>
+        <Item Value="description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactsIterator" id="creationDate1">
+      <AttrNames>
+        <Item Value="creationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactIterator"
+                     id="lastModificationDate1">
+      <AttrNames>
+        <Item Value="lastModificationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactIterator" id="userCreationDate1">
+      <AttrNames>
+        <Item Value="userCreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactIterator" id="userLastModificationDate1">
+      <AttrNames>
+        <Item Value="userLastModificationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getArtifactIterator" id="objectId1">
+      <AttrNames>
+        <Item Value="objectId"/>
+      </AttrNames>
+    </attributeValues>
+    
+    <methodAction id="getDocument" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getDocument"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getDocument_ServiceLocal_dataProvider_getDocument_result">
+      <NamedData NDName="objectid"
+                 NDValue="#{viewScope.BrowseSpacesHelperBean.itemId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="getDocumentIterator" id="name2">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator" id="description2">
+      <AttrNames>
+        <Item Value="description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator" id="size2">
+      <AttrNames>
+        <Item Value="size"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator" id="creationDate2">
+      <AttrNames>
+        <Item Value="creationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator"
+                     id="lastModificationDate2">
+      <AttrNames>
+        <Item Value="lastModificationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator" id="userCreationDate2">
+      <AttrNames>
+        <Item Value="userCreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator" id="userLastModificationDate2">
+      <AttrNames>
+        <Item Value="userLastModificationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator" id="objectId2">
+      <AttrNames>
+        <Item Value="objectId"/>
+      </AttrNames>
+    </attributeValues>
+
+    <methodAction id="getUnifiedMessage" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getUnifiedMessage"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getUnifiedMessage_ServiceLocal_dataProvider_getUnifiedMessage_result">
+      <NamedData NDName="objectid"
+                 NDValue="#{viewScope.BrowseSpacesHelperBean.itemId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="getUnifiedMessageIterator" id="subject3">
+      <AttrNames>
+        <Item Value="subject"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getUnifiedMessageIterator" id="sentTime3">
+      <AttrNames>
+        <Item Value="sentTime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getUnifiedMessageIterator" id="deliveredTime3">
+      <AttrNames>
+        <Item Value="deliveredTime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getUnifiedMessageIterator" id="creationDate3">
+      <AttrNames>
+        <Item Value="creationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getUnifiedMessageIterator"
+                     id="lastModificationDate3">
+      <AttrNames>
+        <Item Value="lastModificationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getUnifiedMessageIterator" id="userCreationDate3">
+      <AttrNames>
+        <Item Value="userCreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getUnifiedMessageIterator" id="userLastModificationDate3">
+      <AttrNames>
+        <Item Value="userLastModificationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getUnifiedMessageIterator" id="size3">
+      <AttrNames>
+        <Item Value="size"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getUnifiedMessageIterator" id="contentId3">
+      <AttrNames>
+        <Item Value="contentId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getUnifiedMessageIterator" id="mediaType3">
+      <AttrNames>
+        <Item Value="mediaType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getUnifiedMessageIterator" id="objectId3">
+      <AttrNames>
+        <Item Value="objectId"/>
+      </AttrNames>
+    </attributeValues>
+    
+    <attributeValues IterBinding="senderIterator" id="participantName">
+      <AttrNames>
+        <Item Value="participantName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="envelopSenderIterator" id="participantName1">
+      <AttrNames>
+        <Item Value="participantName"/>
+      </AttrNames>
+    </attributeValues>
+    
+    <attributeValues IterBinding="changeTokenIterator1" id="token1">
+      <AttrNames>
+        <Item Value="token"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="changeTokenIterator2" id="token2">
+      <AttrNames>
+        <Item Value="token"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="changeTokenIterator3" id="token3">
+      <AttrNames>
+        <Item Value="token"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

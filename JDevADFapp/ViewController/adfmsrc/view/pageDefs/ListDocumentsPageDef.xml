@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="ListDocumentsPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getDocuments.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.Document"
+                    id="getDocumentsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getDocuments" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getDocuments"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getDocuments_ServiceLocal_dataProvider_getDocuments_result">
+      <NamedData NDName="objectid" NDValue="#{pageFlowScope.containerId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="getDocumentsIterator" id="Document">
+      <nodeDefinition DefName="icom.Document" Name="Document0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="description"/>
+          <Item Value="size"/>
+          <Item Value="creationDate"/>
+          <Item Value="lastModificationDate"/>
+          <Item Value="userCreationDate"/>
+          <Item Value="userLastModificationDate"/>
+          <Item Value="objectId"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="createdBy"/>
+          <Item Value="lastModifiedBy"/>
+          <Item Value="changeToken"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="icom.Actor" Name="Document1">
+        <AttrNames>
+          <Item Value="description"/>
+          <Item Value="name"/>
+          <Item Value="creationDate"/>
+          <Item Value="lastModificationDate"/>
+          <Item Value="objectId"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="icom.ChangeToken" Name="Document2">
+        <AttrNames>
+          <Item Value="token"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-call id="icom">
+    <task-flow-reference>
+      <document>/WEB-INF/task-flows/icom-tfd.xml</document>
+      <id>icom-tfd</id>
+    </task-flow-reference>
+    <!--
+    <remote-app-url>localhost:7001/adf/faces/adf.task-flow?adf.tfId=icom-tfd&adf.tfDoc=/WEB-INF/task-flows/icom-tfd.xml</remote-app-url>
+    -->
+  </task-flow-call>
+  <managed-bean id="__6">
+    <managed-bean-name id="__8">BrowseSpacesHelperBean</managed-bean-name>
+    <managed-bean-class>view.BrowseSpacesHelperBean</managed-bean-class>
+    <managed-bean-scope id="__7">view</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

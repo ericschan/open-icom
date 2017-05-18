@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="Id" Package="icom" BeanClass="icom.Id" isJavaBased="true">
+  <Attribute Name="objectId" IsUpdateable="0" Type="java.lang.Object"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true" Type="icom.Id" BeanClass="icom.Id"
+                     id="Id">
+    <ParameterInfo id="id" Type="java.lang.String" isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.Id" BeanClass="icom.Id"
+                     id="Id"/>
+</JavaBean>

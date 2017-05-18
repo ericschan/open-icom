@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="UnifiedMessageParticipant" Package="icom"
+          BeanClass="icom.UnifiedMessageParticipant" isJavaBased="true">
+  <Attribute Name="localPart" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="domainPart" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="canonicalAddress" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="displayName" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="fullAddress" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="name" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="participantName" IsUpdateable="0" Type="java.lang.String"/>
+  <AccessorAttribute id="participant" IsCollection="false"
+                     BeanClass="icom.Addressable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="address" IsCollection="false" BeanClass="java.net.URI"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="icom.Participant"
+                  BeanClass="icom.Participant" id="clone"
+                  ReturnNodeName="UnifiedMessageParticipant"/>
+  <ConstructorMethod IsCollection="true" Type="icom.UnifiedMessageParticipant"
+                     BeanClass="icom.UnifiedMessageParticipant"
+                     id="UnifiedMessageParticipant">
+    <ParameterInfo id="localPart" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="domainPart" Type="java.lang.String"
+                   isStructured="false"/>
+    <ParameterInfo id="displayName" Type="java.lang.String"
+                   isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.UnifiedMessageParticipant"
+                     BeanClass="icom.UnifiedMessageParticipant"
+                     id="UnifiedMessageParticipant">
+    <ParameterInfo id="localPart" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="domainPart" Type="java.lang.String"
+                   isStructured="false"/>
+    <ParameterInfo id="displayPart" Type="byte[]" isStructured="false"/>
+    <ParameterInfo id="displayCharacterSet" Type="java.lang.String"
+                   isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.UnifiedMessageParticipant"
+                     BeanClass="icom.UnifiedMessageParticipant"
+                     id="UnifiedMessageParticipant">
+    <ParameterInfo id="localPart" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="domainPart" Type="java.lang.String"
+                   isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.UnifiedMessageParticipant"
+                     BeanClass="icom.UnifiedMessageParticipant"
+                     id="UnifiedMessageParticipant">
+    <ParameterInfo id="fullAddress" Type="java.lang.String"
+                   isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.UnifiedMessageParticipant"
+                     BeanClass="icom.UnifiedMessageParticipant"
+                     id="UnifiedMessageParticipant">
+    <ParameterInfo id="addressable" Type="icom.Addressable"
+                   isStructured="true"/>
+  </ConstructorMethod>
+</JavaBean>

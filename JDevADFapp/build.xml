@@ -1,0 +1,132 @@
+<project name="adf-icom" default="war" basedir="." >
+  <description>Ant build script for icom project.</description> 
+ 
+  <import file="../ant-icom.xml"/>
+  <property environment="env"/>
+
+  <import file="../build_properties.xml"/>
+  
+  <property name="log.dir" value="./log" />
+  <property name="compile-warnings" value="none"/>
+  <property name="compile.debug" value="on"/>
+  
+    <!--Set classpath vars as required -->
+    <path id="project.classpath">
+       <pathelement location="lib/adfm.jar"/>
+       <pathelement location="lib/adf-controller.jar"/>
+       <pathelement location="lib/adf-controller-api.jar"/>
+       <pathelement location="lib/javax.jsp_1.2.0.0_2-1.jar"/>
+       <pathelement location="lib/javax.jsf_1.1.0.0_1-2.jar"/>
+       <pathelement location="lib/adf-richclient-api-11.jar"/>
+       <pathelement location="lib/trinidad-api.jar"/>
+       <pathelement location="../lib/icom-bean.jar"/>
+       <pathelement location="../lib/icom-session-bean.jar"/>      
+    </path>
+
+    <target name="init">
+        <!--Create the time stamp --> 
+        <tstamp />
+        <!--Create the build directory structure used by compile --> 
+        <mkdir dir="${outdir}" /> 
+        <mkdir dir="${intdir}" />
+    </target>
+
+    <target name="compile_init" depends="init">
+	<mkdir dir="${classes.dir}" />
+	<mkdir dir="${classes.dir}/java" />    
+    </target>
+
+    <target name="compile" depends="compile_init" description="compile the source">
+        <!-- By default debug is off i.e. shippable build -->
+        <condition property="compile.debug" value="off">
+            <not><isset property="compile.debug"/></not>
+        </condition>
+        <!-- By default optimize is on i.e. shippable build -->
+        <condition property="compile.optimize" value="on">
+            <not><isset property="compile.optimize"/></not>
+        </condition>
+	<depend srcdir="ViewController/adfmsrc"
+		destdir="${classes.dir}/java"
+              cache="${cache.dir}"/>
+        <echo>
+            Compiling the source with the following options
+	    Source Directory        : ${src}
+            Destination Directory   : ${classes.dir}
+            Debug                   : ${compile.debug}
+            Optimize                : ${compile.optimize}
+            Nowarn                  : ${compile.nowarn}
+            Decprecation            : ${compile.deprecation}
+        </echo>
+        <!--Compile the java code from ${src} into ${intdir}  --> 
+        <javac deprecation="${compile.deprecation}"
+               debug="${compile.debug}"
+               nowarn="${compile.nowarn}"
+               optimize="${compile.optimize}"
+	       srcdir="ViewController/adfmsrc"
+	       destdir="${classes.dir}/java">
+            <classpath refid="project.classpath" /> 
+            <compilerarg value="-Xlint" />
+        </javac>
+    </target>
+
+    <target name="war" depends="compile">
+	<mkdir dir="${war.dir}"/>
+
+	<war destfile="${war.dir}/adf-icom.war" webxml="ViewController/public_html/WEB-INF/web.xml">
+		<!--Manifest section --> 
+            <manifest>
+               <attribute name="Implementation-Title" value="${Implementation-Title}"/>
+	       <attribute name="Implementation-Version" value="${Implementation-Version}" />
+               <attribute name="Implementation-Vendor" value="${Implementation-Vendor}"/>
+                <!-- add required manifest information here -->
+            </manifest>
+		<classes dir="ViewController/adfmsrc">
+                        <include name="**" />
+			<include name="**/*"/>
+                        <include name="META-INF/**"/>
+			<exclude name="**/*.java"/>
+		</classes>
+                <classes dir="Model/adfmsrc">
+                        <include name="**" />
+			<include name="**/*"/>
+                        <exclude name="META-INF/adfm.xml"/>
+		</classes>
+		<classes dir="${classes.dir}/java">
+                        <include name="**" />
+			<include name="**/*"/>
+		</classes>
+		<fileset dir="ViewController/public_html">
+                        <include name="**" />
+			<include name="WEB-INF/**" />
+			<include name="WEB-INF/lib/**" />
+			<exclude name="WEB-INF/web.xml"/>
+			<exclude name="WEB-INF/temp/**"/>
+			<exclude name="WEB-INF/temp"/>
+		</fileset>
+                
+	</war>
+
+	<condition property="file.size.check">
+           <length file="${war.dir}/adf-icom.war" when="greater" length="0"/>
+        </condition>
+        <!-- fail if file.size.check value is unset -->
+        <fail unless="file.size.check" 
+              message="${war.dir}/adf-icom.war does not exist or is of zero size"/> 
+     </target>
+
+     <target name="lib" depends="war">
+         <copy file="${war.dir}/adf-icom.war"
+		 tofile="../buildout/war/adf-icom.war"/>
+	 <copy file=".adf/META-INF/adf-config.xml"
+		 tofile="../buildout/jlib/adf/META-INF/adf-config.xml"/>
+     </target>
+      
+	<target name="clean" description="clean up">
+		<delete  quiet="true" failonerror="false" includeEmptyDirs="true"> 
+			<fileset dir="${war.dir}" /> 
+			<fileset dir="${outdir}" /> 
+        		<fileset dir="${intdir}" /> 
+		</delete>
+	</target>
+
+</project>

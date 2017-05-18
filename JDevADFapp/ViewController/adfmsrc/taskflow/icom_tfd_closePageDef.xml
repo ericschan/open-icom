@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+		id="icom_tfd_closePageDef"
+                Package="taskflow" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <action id="close" RequiresUpdateModel="true" Action="invokeMethod"
+            MethodName="close" IsViewObjectMethod="false"
+            DataControl="ServiceLocal"
+            InstanceName="ServiceLocal.dataProvider"/>
+  </bindings>
+</pageDefinition>

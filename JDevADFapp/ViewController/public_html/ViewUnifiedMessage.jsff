@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth">
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1" layout="scroll">
+        <af:panelHeader text="#{pageFlowScope.itemType}" id="ph1">
+          <f:facet name="context"/>
+          <f:facet name="menuBar"/>
+          <f:facet name="toolbar"/>
+          <f:facet name="legend"/>
+          <f:facet name="info"/>
+          <af:commandButton text="View Content" id="cb2" action="next"/>
+          <af:panelFormLayout id="pfl1">
+            <af:inputText value="#{bindings.subject.inputValue}"
+                          label="#{bindings.subject.hints.label}"
+                          required="#{bindings.subject.hints.mandatory}"
+                          columns="#{bindings.subject.hints.displayWidth}"
+                          maximumLength="#{bindings.subject.hints.precision}"
+                          shortDesc="#{bindings.subject.hints.tooltip}"
+                          id="it19">
+              <f:validator binding="#{bindings.subject.validator}"/>
+            </af:inputText>
+            <af:inputDate value="#{bindings.sentTime.inputValue}"
+                          label="#{bindings.sentTime.hints.label}"
+                          required="#{bindings.sentTime.hints.mandatory}"
+                          shortDesc="#{bindings.sentTime.hints.tooltip}"
+                          id="id10" readOnly="true">
+              <f:validator binding="#{bindings.sentTime.validator}"/>
+              <af:convertDateTime pattern="#{bindings.sentTime.format}"
+                                  type="both"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.deliveredTime.inputValue}"
+                          label="#{bindings.deliveredTime.hints.label}"
+                          required="#{bindings.deliveredTime.hints.mandatory}"
+                          shortDesc="#{bindings.deliveredTime.hints.tooltip}"
+                          id="id9">
+              <f:validator binding="#{bindings.deliveredTime.validator}"/>
+              <af:convertDateTime pattern="#{bindings.deliveredTime.format}"
+                                  type="both"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.creationDate.inputValue}"
+                          label="#{bindings.creationDate.hints.label}"
+                          required="#{bindings.creationDate.hints.mandatory}"
+                          shortDesc="#{bindings.creationDate.hints.tooltip}"
+                          id="id8">
+              <f:validator binding="#{bindings.creationDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.creationDate.format}"
+                                  type="both"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.lastModificationDate.inputValue}"
+                          label="#{bindings.lastModificationDate.hints.label}"
+                          required="#{bindings.lastModificationDate.hints.mandatory}"
+                          shortDesc="#{bindings.lastModificationDate.hints.tooltip}"
+                          id="id1" readOnly="true">
+              <f:validator binding="#{bindings.lastModificationDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.lastModificationDate.format}"
+                                  type="both"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.userCreationDate.inputValue}"
+                          label="#{bindings.userCreationDate.hints.label}"
+                          required="#{bindings.userCreationDate.hints.mandatory}"
+                          shortDesc="#{bindings.userCreationDate.hints.tooltip}"
+                          id="id7">
+              <f:validator binding="#{bindings.userCreationDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.userCreationDate.format}"
+                                  type="both"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.userLastModificationDate.inputValue}"
+                          label="#{bindings.userLastModificationDate.hints.label}"
+                          required="#{bindings.userLastModificationDate.hints.mandatory}"
+                          shortDesc="#{bindings.userLastModificationDate.hints.tooltip}"
+                          id="id2">
+              <f:validator binding="#{bindings.userLastModificationDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.userLastModificationDate.format}"
+                                  type="both"/>
+            </af:inputDate>
+            <af:inputText value="#{bindings.size.inputValue}"
+                          label="#{bindings.size.hints.label}"
+                          required="#{bindings.size.hints.mandatory}"
+                          columns="#{bindings.size.hints.displayWidth}"
+                          maximumLength="#{bindings.size.hints.precision}"
+                          shortDesc="#{bindings.size.hints.tooltip}" id="it11">
+              <f:validator binding="#{bindings.size.validator}"/>
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.size.format}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.participantName1.inputValue}"
+                          label="Sender"
+                          required="#{bindings.participantName1.hints.mandatory}"
+                          columns="#{bindings.participantName1.hints.displayWidth}"
+                          maximumLength="#{bindings.participantName1.hints.precision}"
+                          shortDesc="#{bindings.participantName1.hints.tooltip}"
+                          id="it8">
+              <f:validator binding="#{bindings.participantName1.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.participantName.inputValue}"
+                          label="Envelope Sender"
+                          required="#{bindings.participantName.hints.mandatory}"
+                          columns="#{bindings.participantName.hints.displayWidth}"
+                          maximumLength="#{bindings.participantName.hints.precision}"
+                          shortDesc="#{bindings.participantName.hints.tooltip}"
+                          id="it9">
+              <f:validator binding="#{bindings.participantName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.name4.inputValue}"
+                          label="Created By"
+                          required="#{bindings.name4.hints.mandatory}"
+                          columns="#{bindings.name4.hints.displayWidth}"
+                          maximumLength="#{bindings.name4.hints.precision}"
+                          shortDesc="#{bindings.name4.hints.tooltip}" id="it23">
+              <f:validator binding="#{bindings.name4.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.name5.inputValue}"
+                          label="Last Modified By"
+                          required="#{bindings.name5.hints.mandatory}"
+                          columns="#{bindings.name5.hints.displayWidth}"
+                          maximumLength="#{bindings.name5.hints.precision}"
+                          shortDesc="#{bindings.name5.hints.tooltip}" id="it12">
+              <f:validator binding="#{bindings.name5.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.contentId.inputValue}"
+                          label="#{bindings.contentId.hints.label}"
+                          required="#{bindings.contentId.hints.mandatory}"
+                          columns="#{bindings.contentId.hints.displayWidth}"
+                          maximumLength="#{bindings.contentId.hints.precision}"
+                          shortDesc="#{bindings.contentId.hints.tooltip}"
+                          id="it18">
+              <f:validator binding="#{bindings.contentId.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.mediaType.inputValue}"
+                          label="#{bindings.mediaType.hints.label}"
+                          required="#{bindings.mediaType.hints.mandatory}"
+                          columns="#{bindings.mediaType.hints.displayWidth}"
+                          maximumLength="#{bindings.mediaType.hints.precision}"
+                          shortDesc="#{bindings.mediaType.hints.tooltip}"
+                          id="it2">
+              <f:validator binding="#{bindings.mediaType.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.name.inputValue}"
+                          label="#{bindings.name.hints.label}"
+                          required="#{bindings.name.hints.mandatory}"
+                          columns="#{bindings.name.hints.displayWidth}"
+                          maximumLength="#{bindings.name.hints.precision}"
+                          shortDesc="#{bindings.name.hints.tooltip}" id="it7">
+              <f:validator binding="#{bindings.name.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.description.inputValue}"
+                          label="#{bindings.description.hints.label}"
+                          required="#{bindings.description.hints.mandatory}"
+                          columns="#{bindings.description.hints.displayWidth}"
+                          maximumLength="#{bindings.description.hints.precision}"
+                          shortDesc="#{bindings.description.hints.tooltip}"
+                          id="it22">
+              <f:validator binding="#{bindings.description.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.objectId.inputValue}"
+                          label="#{bindings.objectId.hints.label}"
+                          required="#{bindings.objectId.hints.mandatory}"
+                          columns="#{bindings.objectId.hints.displayWidth}"
+                          maximumLength="#{bindings.objectId.hints.precision}"
+                          shortDesc="#{bindings.objectId.hints.tooltip}"
+                          id="it1">
+              <f:validator binding="#{bindings.objectId.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.token.inputValue}"
+                          label="#{bindings.token.hints.label}"
+                          required="#{bindings.token.hints.mandatory}"
+                          columns="#{bindings.token.hints.displayWidth}"
+                          maximumLength="#{bindings.token.hints.precision}"
+                          shortDesc="#{bindings.token.hints.tooltip}" id="it14">
+              <f:validator binding="#{bindings.token.validator}"/>
+            </af:inputText>
+            <f:facet name="footer">
+              <af:commandButton text="Submit" id="cb1"
+                                actionListener="#{pageFlowScope.ViewItemHelperBean.doSubmit}"/>
+            </f:facet>
+          </af:panelFormLayout>
+        </af:panelHeader>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

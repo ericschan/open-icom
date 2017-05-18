@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="EntityAddress" Package="icom" BeanClass="icom.EntityAddress"
+          isJavaBased="true">
+  <Attribute Name="addressType" Type="java.lang.String"/>
+  <AccessorAttribute id="address" IsCollection="false" BeanClass="java.net.URI"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="void" id="setAddress"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="addressScheme" Type="icom.AddressScheme"
+                   isStructured="true"/>
+    <ParameterInfo id="schemeSpecificAddressPart" Type="java.lang.String"
+                   isStructured="false"/>
+    <ParameterInfo id="fragment" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="icom.EntityAddress"
+                  BeanClass="icom.EntityAddress" id="clone"
+                  ReturnNodeName="EntityAddress"/>
+  <ConstructorMethod IsCollection="true" Type="icom.EntityAddress"
+                     BeanClass="icom.EntityAddress" id="EntityAddress"/>
+</JavaBean>

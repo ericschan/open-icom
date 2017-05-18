@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="Property" Package="icom" BeanClass="icom.Property"
+          isJavaBased="true">
+  <Attribute Name="value" Type="java.lang.Object"/>
+  <AccessorAttribute id="propertyDefinition" IsCollection="false"
+                     BeanClass="icom.PropertyDefinition"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="icom.Property"
+                  BeanClass="icom.Property" id="clone"
+                  ReturnNodeName="Property"/>
+  <ConstructorMethod IsCollection="true" Type="icom.Property"
+                     BeanClass="icom.Property" id="Property">
+    <ParameterInfo id="propertyDefinition" Type="icom.PropertyDefinition"
+                   isStructured="true"/>
+    <ParameterInfo id="value" Type="java.lang.Object" isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.Property"
+                     BeanClass="icom.Property" id="Property">
+    <ParameterInfo id="propertyDefinition" Type="icom.PropertyDefinition"
+                   isStructured="true"/>
+  </ConstructorMethod>
+</JavaBean>

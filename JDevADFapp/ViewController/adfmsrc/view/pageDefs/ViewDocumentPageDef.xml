@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="ViewDocumentPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getDocument.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.Document"
+                    id="getDocumentIterator"/>
+    <accessorIterator MasterBinding="getDocumentIterator" Binds="content"
+                      RangeSize="25" DataControl="ServiceLocal"
+                      BeanClass="icom.Content" id="contentIterator"/>
+    <accessorIterator MasterBinding="getDocumentIterator" Binds="changeToken"
+                      RangeSize="25" DataControl="ServiceLocal"
+                      BeanClass="icom.ChangeToken" id="changeTokenIterator"/>
+    <accessorIterator MasterBinding="getDocumentIterator" Binds="createdBy"
+                      RangeSize="25" DataControl="ServiceLocal"
+                      BeanClass="icom.Actor" id="createdByIterator"/>
+    <accessorIterator MasterBinding="getDocumentIterator" Binds="lastModifiedBy"
+                      RangeSize="25" DataControl="ServiceLocal"
+                      BeanClass="icom.Actor" id="lastModifiedByIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getDocument" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getDocument"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getDocument_ServiceLocal_dataProvider_getDocument_result">
+      <NamedData NDName="objectid" NDValue="#{pageFlowScope.itemId}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="getDocumentIterator" id="size">
+      <AttrNames>
+        <Item Value="size"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator" id="description">
+      <AttrNames>
+        <Item Value="description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator" id="userCreationDate">
+      <AttrNames>
+        <Item Value="userCreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator"
+                     id="userLastModificationDate">
+      <AttrNames>
+        <Item Value="userLastModificationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator" id="name">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator" id="creationDate">
+      <AttrNames>
+        <Item Value="creationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator"
+                     id="lastModificationDate">
+      <AttrNames>
+        <Item Value="lastModificationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="getDocumentIterator" id="objectId">
+      <AttrNames>
+        <Item Value="objectId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contentIterator" id="contentId">
+      <AttrNames>
+        <Item Value="contentId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="contentIterator" id="mediaType">
+      <AttrNames>
+        <Item Value="mediaType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="changeTokenIterator" id="token">
+      <AttrNames>
+        <Item Value="token"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="createdByIterator" id="name2">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="lastModifiedByIterator" id="name3">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

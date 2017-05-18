@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:tree value="#{bindings.spaces.treeModel}" var="node"
+                 selectionListener="#{pageFlowScope.BrowseContainersHelperBean.selectTreeNode}"
+                 rowDisclosureListener="#{pageFlowScope.BrowseContainersHelperBean.discloseTreeNode}"
+                 rowSelection="single" id="t1">
+          <f:facet name="nodeStamp">
+            <af:outputText value="#{node}" id="ot1"/>
+          </f:facet>
+        </af:tree>
+      </af:panelCollection>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

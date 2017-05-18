@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="anttasks">
+
+    <property environment="env"/>
+
+    <!-- The following file contains the properties required for proper execution.  Please ensure that the properties
+         in the file are correct. -->
+    <property file="ant-icom.properties"/>
+
+    <property name="JAVA_HOME" value="${java.home}"/>
+
+    <!-- Target for displaying build information. -->
+    <target name="common">
+        <echo message="BuildName: ${ant.project.name}"/>
+        <echo message="BuildHome: ${basedir}"/>
+        <echo message="BuildFile: ${ant.file}"/>
+        <echo message="BuildJVM: ${ant.java.version}"/>
+    </target>
+
+</project>

@@ -1,0 +1,41 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+	   http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+	version="1.0">
+   <persistence-unit name="csiEntityManager">
+      <description>This unit uses CSI connector.</description>
+      <provider>icom.jpa.rt.EntityManagerFactoryProvider</provider>
+      <jar-file>icom-bean.jar</jar-file>
+      <jar-file>icom-bean-info.jar</jar-file>
+      <jar-file>beehive-bean.jar</jar-file>
+      <jar-file>beehive-bean-info.jar</jar-file>
+      <jar-file>icom-beehive-csi.jar</jar-file>
+      <jar-file>jpqlparser.jar</jar-file>
+      <jar-file>icom-entity-manager-interface.jar</jar-file>
+      <jar-file>icom-entity-manager.jar</jar-file>
+      <properties>
+	  <property name = "VendorBeanUtil" value = "icom.beehive.BeehiveBeanUtil"/>
+          <property name = "DataAccessConnectorFactory" value = "icom.jpa.csi.CsiConnectorFactory"/>
+      </properties>
+   </persistence-unit>
+   <persistence-unit name="bdkEntityManager">
+      <description>This unit uses BDK connector.</description>
+      <provider>icom.jpa.rt.EntityManagerFactoryProvider</provider>
+      <jar-file>icom-bean.jar</jar-file>
+      <jar-file>icom-bean-info.jar</jar-file>
+      <jar-file>beehive-bean.jar</jar-file>
+      <jar-file>beehive-bean-info.jar</jar-file>
+      <jar-file>icom-beehive-bdk.jar</jar-file>
+      <jar-file>jpqlparser.jar</jar-file>
+      <jar-file>icom-entity-manager-interface.jar</jar-file>
+      <jar-file>icom-entity-manager.jar</jar-file>
+      <properties>
+	  <property name = "VendorBeanUtil" value = "icom.beehive.BeehiveBeanUtil"/>
+          <property name = "DataAccessConnectorFactory" value = "icom.jpa.bdk.BdkConnectorFactory"/>
+	  <property name = "Host" value = "a.b.com"/>
+	  <property name = "Port" value = "443"/>
+	  <property name = "Protocol" value = "https"/>
+      </properties>
+   </persistence-unit>
+</persistence>

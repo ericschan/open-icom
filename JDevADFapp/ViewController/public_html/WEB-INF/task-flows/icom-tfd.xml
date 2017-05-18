@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="icom-tfd">
+    <default-activity id="__19">EnterCredential</default-activity>
+    <managed-bean id="__50">
+      <managed-bean-name id="__51">ExploreSpacesHelperBean</managed-bean-name>
+      <managed-bean-class id="__52">view.ExploreSpacesHelperBean</managed-bean-class>
+      <managed-bean-scope id="__53">view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__1">
+      <managed-bean-name id="__9">BrowseContainersRegionBean</managed-bean-name>
+      <managed-bean-class id="__7">taskflow.BrowseContainersRegionBean</managed-bean-class>
+      <managed-bean-scope id="__10">view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__54">
+      <managed-bean-name id="__55">ListItemsRegionBean</managed-bean-name>
+      <managed-bean-class id="__56">taskflow.ListItemsRegionBean</managed-bean-class>
+      <managed-bean-scope id="__57">view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__58">
+      <managed-bean-name id="__59">ViewItemRegionBean</managed-bean-name>
+      <managed-bean-class id="__60">taskflow.ViewItemRegionBean</managed-bean-class>
+      <managed-bean-scope id="__61">view</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__62">
+      <managed-bean-name id="__63">IcomTaskflowHelperBean</managed-bean-name>
+      <managed-bean-class id="__64">taskflow.icomTaskflowHelperBean</managed-bean-class>
+      <managed-bean-scope id="__65">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="EnterCredential">
+      <page>/EnterCredential.jspx</page>
+    </view>
+    <view id="ExploreSpaces">
+      <page>/ExploreSpaces.jspx</page>
+    </view>
+    <method-call id="close">
+      <method>#{pageFlowScope.IcomTaskflowHelperBean.close}</method>
+      <outcome id="__11">
+        <fixed-outcome>close</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">EnterCredential</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">submit</from-outcome>
+        <to-activity-id id="__5">ExploreSpaces</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id id="__13">ExploreSpaces</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome id="__16">close</from-outcome>
+        <to-activity-id id="__14">close</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__21">
+      <from-activity-id id="__22">close</from-activity-id>
+      <control-flow-case id="__25">
+        <from-outcome id="__24">close</from-outcome>
+        <to-activity-id id="__23">EnterCredential</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <visibility id="__8">
+      <url-invoke-allowed/>
+    </visibility>
+  </task-flow-definition>
+</adfc-config>

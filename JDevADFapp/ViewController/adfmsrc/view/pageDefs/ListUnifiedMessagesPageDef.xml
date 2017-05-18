@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="ListUnifiedMessagesPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getUnifiedMessages.result" DataControl="ServiceLocal"
+                    RangeSize="25" BeanClass="icom.UnifiedMessage"
+                    id="getUnifiedMessagesIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getUnifiedMessages" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getUnifiedMessages"
+                  IsViewObjectMethod="false" DataControl="ServiceLocal"
+                  InstanceName="ServiceLocal.dataProvider"
+                  ReturnName="data.ServiceLocal.methodResults.getUnifiedMessages_ServiceLocal_dataProvider_getUnifiedMessages_result">
+      <NamedData NDName="objectid"
+                 NDType="java.lang.String"
+                 NDValue="#{pageFlowScope.containerId}"/>
+    </methodAction>
+    <tree IterBinding="getUnifiedMessagesIterator" id="UnifiedMessage">
+      <nodeDefinition DefName="icom.UnifiedMessage" Name="UnifiedMessage0">
+        <AttrNames>
+          <Item Value="subject"/>
+          <Item Value="sentTime"/>
+          <Item Value="deliveredTime"/>
+          <Item Value="creationDate"/>
+          <Item Value="lastModificationDate"/>
+          <Item Value="userCreationDate"/>
+          <Item Value="userLastModificationDate"/>
+          <Item Value="size"/>
+          <Item Value="contentId"/>
+          <Item Value="mediaType"/>
+          <Item Value="objectId"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="sender"/>
+          <Item Value="envelopeSender"/>
+          <Item Value="createdBy"/>
+          <Item Value="lastModifiedBy"/>
+          <Item Value="changeToken"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="icom.Participant" Name="UnifiedMessage1">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="participantName"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="icom.Actor" Name="UnifiedMessage2">
+        <AttrNames>
+          <Item Value="description"/>
+          <Item Value="name"/>
+          <Item Value="creationDate"/>
+          <Item Value="lastModificationDate"/>
+          <Item Value="objectId"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="icom.ChangeToken" Name="UnifiedMessage3">
+        <AttrNames>
+          <Item Value="token"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

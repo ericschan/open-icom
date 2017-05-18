@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="Group" Package="icom" BeanClass="icom.Group" isJavaBased="true">
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="creationDate" IsUpdateable="0" Type="java.util.Date"/>
+  <Attribute Name="lastModificationDate" Type="java.util.Date"/>
+  <Attribute Name="objectId" Type="java.lang.String" IsUpdateable="0"/>
+  <AccessorAttribute id="assignedScopes" IsCollection="true"
+                     BeanClass="icom.Scope"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="assignedGroups" IsCollection="true"
+                     BeanClass="icom.Group"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="assignedRoles" IsCollection="true"
+                     BeanClass="icom.Role"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="memberActors" IsCollection="true"
+                     BeanClass="icom.Actor"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="memberGroups" IsCollection="true"
+                     BeanClass="icom.Group"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="addresses" IsCollection="true"
+                     BeanClass="icom.EntityAddress"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="primaryAddress" IsCollection="false"
+                     BeanClass="icom.EntityAddress"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="relationships" IsCollection="true"
+                     RemoveMethod="removeRelationship"
+                     AddMethod="addRelationship" BeanClass="icom.Relationship"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeRelationship"/>
+      <Property Name="AddMethod" Value="addRelationship"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="properties" IsCollection="true"
+                     RemoveMethod="removeProperty" AddMethod="addProperty"
+                     BeanClass="icom.Property"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeProperty"/>
+      <Property Name="AddMethod" Value="addProperty"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="id" IsCollection="false" BeanClass="icom.Id"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="changeToken" IsCollection="false"
+                     BeanClass="icom.ChangeToken"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="createdBy" IsCollection="false" BeanClass="icom.Actor"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="lastModifiedBy" IsCollection="false"
+                     BeanClass="icom.Actor"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="parent" IsCollection="false" BeanClass="icom.Parental"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="owner" IsCollection="false" BeanClass="icom.Owner"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="accessControlList" IsCollection="false"
+                     BeanClass="icom.AccessControlList"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="attachedMarkers" IsCollection="true"
+                     BeanClass="icom.Marker"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="categoryApplications" IsCollection="true"
+                     BeanClass="icom.CategoryApplication"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="tagApplications" IsCollection="true"
+                     BeanClass="icom.TagApplication"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="parentExtent" IsCollection="false"
+                     BeanClass="icom.Extent"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="void" id="delete"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addAssignedScope"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="scope" Type="icom.Scope" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeAssignedScope"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="scope" Type="icom.Scope" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addAssignedGroup"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="group" Type="icom.Group" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeAssignedGroup"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="group" Type="icom.Group" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addAssignedRole"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="role" Type="icom.Role" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeAssignedRole"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="role" Type="icom.Role" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addAddress"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="address" Type="icom.EntityAddress" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeAddress"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="address" Type="icom.EntityAddress" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="addProperty"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="property" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="removeProperty"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="property" Type="icom.Property" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="isEditable"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="icom.Entity"
+                  BeanClass="icom.Entity" id="clone" ReturnNodeName="Entity"/>
+  <ConstructorMethod IsCollection="true" Type="icom.Group"
+                     BeanClass="icom.Group" id="Group">
+    <ParameterInfo id="parent" Type="icom.Scope" isStructured="true"/>
+    <ParameterInfo id="createdOn" Type="java.util.Date" isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="icom.Group"
+                     BeanClass="icom.Group" id="Group">
+    <ParameterInfo id="id" Type="icom.Id" isStructured="true"/>
+    <ParameterInfo id="parent" Type="icom.Scope" isStructured="true"/>
+    <ParameterInfo id="createdOn" Type="java.util.Date" isStructured="false"/>
+  </ConstructorMethod>
+</JavaBean>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="Versionable" Package="icom" BeanClass="icom.Versionable"
+          isJavaBased="true">
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <AccessorAttribute id="versionControlMetadata" IsCollection="false"
+                     BeanClass="icom.VersionControlMetadata"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="versionType" IsCollection="false"
+                     BeanClass="icom.VersionType"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="parent" IsCollection="false" BeanClass="icom.Parental"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="id" IsCollection="false" BeanClass="icom.Id"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="changeToken" IsCollection="false"
+                     BeanClass="icom.ChangeToken"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+</JavaBean>

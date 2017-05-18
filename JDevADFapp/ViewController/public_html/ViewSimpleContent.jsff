@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1" layout="scroll">
+          <af:panelHeader text="#{pageFlowScope.itemType}" id="ph1">
+            <af:commandButton text="Overview" id="cb1" action="next"/>
+            <af:panelBox text="Content Info" id="pb1">
+                <af:panelFormLayout id="pfl1">
+                  <af:inputText value="#{bindings.contentEncoding.inputValue}"
+                                label="#{bindings.contentEncoding.hints.label}"
+                                required="#{bindings.contentEncoding.hints.mandatory}"
+                                columns="#{bindings.contentEncoding.hints.displayWidth}"
+                                maximumLength="#{bindings.contentEncoding.hints.precision}"
+                                shortDesc="#{bindings.contentEncoding.hints.tooltip}"
+                                id="it2">
+                    <f:validator binding="#{bindings.contentEncoding.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.characterEncoding.inputValue}"
+                                label="#{bindings.characterEncoding.hints.label}"
+                                required="#{bindings.characterEncoding.hints.mandatory}"
+                                columns="#{bindings.characterEncoding.hints.displayWidth}"
+                                maximumLength="#{bindings.characterEncoding.hints.precision}"
+                                shortDesc="#{bindings.characterEncoding.hints.tooltip}"
+                                id="it6">
+                    <f:validator binding="#{bindings.characterEncoding.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.contentLength.inputValue}"
+                                label="#{bindings.contentLength.hints.label}"
+                                required="#{bindings.contentLength.hints.mandatory}"
+                                columns="#{bindings.contentLength.hints.displayWidth}"
+                                maximumLength="#{bindings.contentLength.hints.precision}"
+                                shortDesc="#{bindings.contentLength.hints.tooltip}"
+                                id="it4">
+                    <f:validator binding="#{bindings.contentLength.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.contentLength.format}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.contentLanguage.inputValue}"
+                                label="#{bindings.contentLanguage.hints.label}"
+                                required="#{bindings.contentLanguage.hints.mandatory}"
+                                columns="#{bindings.contentLanguage.hints.displayWidth}"
+                                maximumLength="#{bindings.contentLanguage.hints.precision}"
+                                shortDesc="#{bindings.contentLanguage.hints.tooltip}"
+                                id="it1">
+                    <f:validator binding="#{bindings.contentLanguage.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.contentId.inputValue}"
+                                label="#{bindings.contentId.hints.label}"
+                                required="#{bindings.contentId.hints.mandatory}"
+                                columns="#{bindings.contentId.hints.displayWidth}"
+                                maximumLength="#{bindings.contentId.hints.precision}"
+                                shortDesc="#{bindings.contentId.hints.tooltip}"
+                                id="it3">
+                    <f:validator binding="#{bindings.contentId.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.mediaType.inputValue}"
+                                label="#{bindings.mediaType.hints.label}"
+                                required="#{bindings.mediaType.hints.mandatory}"
+                                columns="#{bindings.mediaType.hints.displayWidth}"
+                                maximumLength="#{bindings.mediaType.hints.precision}"
+                                shortDesc="#{bindings.mediaType.hints.tooltip}"
+                                id="it5">
+                    <f:validator binding="#{bindings.mediaType.validator}"/>
+                  </af:inputText>
+                  <f:facet name="footer"/>
+                </af:panelFormLayout>
+            </af:panelBox>
+            <af:panelBox text="Content" id="pb2">
+              <f:facet name="toolbar"/>
+              <af:richTextEditor id="rte1" value="#{bindings.content.inputValue}" simple="true"
+                                 styleClass="AFStretchWidth"/>
+            </af:panelBox>
+          </af:panelHeader>
+      </af:panelGroupLayout> 
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>
